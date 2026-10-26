@@ -240,6 +240,6 @@ function makeDemo(id){const g=state.groups.find(g=>g.id===id)||state.groups[0];r
 async function init(){try{if(state.demo){document.getElementById('demo-banner').hidden=false;state.user={id:1,first_name:'Гость',last_name:'',username:'preview'};state.groups=[{id:'-1001',title:'Солотащера чат',paid:true,tier:'vip',role:'manager',enabled:true},{id:'-1002',title:'GolkaGTB Testing',paid:false,tier:'free',role:'owner',enabled:true}]}else{const me=await request('/me');state.user=me.user;state.groups=me.groups;state.bot=me.bot_username||FALLBACK_BOT}if(!state.groups.length){main.innerHTML=empty('Пока нет доступных групп. Подключите группу в боте или попросите владельца назначить вас управляющим.','users')+btn('Подключить первую группу','connect-bot','manage','wide primary');return}let saved;try{saved=localStorage.getItem('golka.selectedGroup')}catch{}await loadGroup(state.groups.some(g=>g.id===saved)?saved:state.groups[0].id)}catch(error){showError(error.message)}}
 try{tg?.ready();tg?.expand();tg?.setHeaderColor('#000000');tg?.setBackgroundColor('#000000');tg?.BackButton?.onClick(()=>{if(document.getElementById('dialog').open){if(state.panel?.back)panelStep(state.panel.back).catch(error=>toast(error.message));else closeDialog();return}if(state.history.length){state.view=state.history.pop();render()}})}catch{}
 </script>
-<script src="beta.js?v=050beta2"></script>
+<script src="beta.js?v=050beta3"></script>
 </body>
 </html>
