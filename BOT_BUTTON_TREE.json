@@ -1,0 +1,3942 @@
+{
+  "version": "0.5.6",
+  "format": "GolkaGTB button tree / editable review file",
+  "note": "Это снимок меню для редактирования и передачи разработчику. Изменение файла само по себе не меняет работающего бота. Условия видимости и динамические списки остаются в коде. Значения в {скобках} заполняются при открытии. Не меняйте id/source без необходимости.",
+  "menus": [
+    {
+      "id": "access_panel.show_free_feature",
+      "source": "modbot/access_panel.py:9",
+      "buttons": [
+        {
+          "id": "access_panel.show_free_feature.14",
+          "label": "Посмотреть тарифы",
+          "action": "ec:access:{chat}",
+          "kind": "callback",
+          "source": "modbot/access_panel.py:14"
+        },
+        {
+          "id": "access_panel.show_free_feature.17",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/access_panel.py:17"
+        }
+      ]
+    },
+    {
+      "id": "ads.ads_list",
+      "source": "modbot/ads.py:45",
+      "buttons": [
+        {
+          "id": "ads.ads_list.49",
+          "label": "{'Отправить рекламу на проверку' if user != OWNER_ID else 'Создать свою рекламу'}",
+          "action": "ad:new",
+          "kind": "callback",
+          "source": "modbot/ads.py:49"
+        },
+        {
+          "id": "ads.ads_list.50",
+          "label": "Объявления на проверке",
+          "action": "ad:review",
+          "kind": "callback",
+          "source": "modbot/ads.py:50"
+        },
+        {
+          "id": "ads.ads_list.51",
+          "label": "#{ad['id']} · {STATES[ad['state']]}",
+          "action": "ad:view:{ad['id']}",
+          "kind": "callback",
+          "source": "modbot/ads.py:51"
+        },
+        {
+          "id": "ads.ads_list.53",
+          "label": "←",
+          "action": "ad:list:{page - 1}:{int(archived)}",
+          "kind": "callback",
+          "source": "modbot/ads.py:53"
+        },
+        {
+          "id": "ads.ads_list.54",
+          "label": "→",
+          "action": "ad:list:{page + 1}:{int(archived)}",
+          "kind": "callback",
+          "source": "modbot/ads.py:54"
+        },
+        {
+          "id": "ads.ads_list.57",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/ads.py:57"
+        }
+      ]
+    },
+    {
+      "id": "ads.ads_view",
+      "source": "modbot/ads.py:61",
+      "buttons": [
+        {
+          "id": "ads.ads_view.82",
+          "label": "Посмотреть объявление",
+          "action": "ad:preview:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:82"
+        },
+        {
+          "id": "ads.ads_view.84",
+          "label": "Купить отправки · 2 ⭐ / шт.",
+          "action": "ad:buy:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:84"
+        },
+        {
+          "id": "ads.ads_view.85",
+          "label": "Отправки за a$",
+          "action": "ad:tokens:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:85"
+        },
+        {
+          "id": "ads.ads_view.87",
+          "label": "Редактировать объявление",
+          "action": "ad:edit:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:87"
+        },
+        {
+          "id": "ads.ads_view.87",
+          "label": "{'Возобновить рассылку' if ad['paused'] else 'Приостановить рассылку'}",
+          "action": "ad:pause:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:87"
+        },
+        {
+          "id": "ads.ads_view.87",
+          "label": "{'Вернуть в список' if ad['hidden'] else 'Убрать из списка'}",
+          "action": "ad:archive:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:87"
+        },
+        {
+          "id": "ads.ads_view.87",
+          "label": "Баннер в мини-приложении",
+          "action": "bn:open:ad:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:87"
+        },
+        {
+          "id": "ads.ads_view.88",
+          "label": "Посмотреть изменения",
+          "action": "ad:editpreview:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:88"
+        },
+        {
+          "id": "ads.ads_view.89",
+          "label": "Удалить объявление · вернуть остаток в a$",
+          "action": "ad:deleteconfirm:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:89"
+        },
+        {
+          "id": "ads.ads_view.92",
+          "label": "Одобрить",
+          "action": "ad:approve:{identifier}:{ad['edit_revision']}",
+          "kind": "callback",
+          "source": "modbot/ads.py:92"
+        },
+        {
+          "id": "ads.ads_view.92",
+          "label": "Отклонить с причиной",
+          "action": "ad:reject:{identifier}:{ad['edit_revision']}",
+          "kind": "callback",
+          "source": "modbot/ads.py:92"
+        },
+        {
+          "id": "ads.ads_view.93",
+          "label": "Удалить объявление",
+          "action": "ad:deleteconfirm:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:93"
+        },
+        {
+          "id": "ads.ads_view.94",
+          "label": "Обновить статистику",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:94"
+        },
+        {
+          "id": "ads.ads_view.94",
+          "label": "Назад",
+          "action": "ad:list:0",
+          "kind": "callback",
+          "source": "modbot/ads.py:94"
+        }
+      ]
+    },
+    {
+      "id": "ads.ads_callback",
+      "source": "modbot/ads.py:97",
+      "buttons": [
+        {
+          "id": "ads.ads_callback.108",
+          "label": "Назад",
+          "action": "ad:list:0",
+          "kind": "callback",
+          "source": "modbot/ads.py:108"
+        },
+        {
+          "id": "ads.ads_callback.113",
+          "label": "{'#' + str(a[0])}",
+          "action": "ad:view:{a[0]}",
+          "kind": "callback",
+          "source": "modbot/ads.py:113"
+        },
+        {
+          "id": "ads.ads_callback.113",
+          "label": "Назад",
+          "action": "ad:list:0",
+          "kind": "callback",
+          "source": "modbot/ads.py:113"
+        },
+        {
+          "id": "ads.ads_callback.121",
+          "label": "Назад",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:121"
+        },
+        {
+          "id": "ads.ads_callback.131",
+          "label": "Назад",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:131"
+        },
+        {
+          "id": "ads.ads_callback.135",
+          "label": "Назад",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:135"
+        },
+        {
+          "id": "ads.ads_callback.145",
+          "label": "Без причины",
+          "action": "ad:rejectnow:{identifier}:{ad['edit_revision']}",
+          "kind": "callback",
+          "source": "modbot/ads.py:145"
+        },
+        {
+          "id": "ads.ads_callback.145",
+          "label": "Назад",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:145"
+        },
+        {
+          "id": "ads.ads_callback.151",
+          "label": "Удалить",
+          "action": "ad:delete:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:151"
+        },
+        {
+          "id": "ads.ads_callback.151",
+          "label": "Назад",
+          "action": "ad:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/ads.py:151"
+        },
+        {
+          "id": "ads.ads_callback.157",
+          "label": "Назад",
+          "action": "ad:list:0",
+          "kind": "callback",
+          "source": "modbot/ads.py:157"
+        }
+      ]
+    },
+    {
+      "id": "broadcasts.broadcast_list",
+      "source": "modbot/broadcasts.py:40",
+      "buttons": [
+        {
+          "id": "broadcasts.broadcast_list.42",
+          "label": "Создать рассылку",
+          "action": "bc:new",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:42"
+        },
+        {
+          "id": "broadcasts.broadcast_list.44",
+          "label": "{'#' + str(row['id']) + ' · ' + self.e(user, 'broadcast_state_' + row['state'])}",
+          "action": "bc:view:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:44"
+        }
+      ]
+    },
+    {
+      "id": "broadcasts.broadcast_view",
+      "source": "modbot/broadcasts.py:48",
+      "buttons": [
+        {
+          "id": "broadcasts.broadcast_view.59",
+          "label": "{self.e(user, 'broadcast_audience_' + key)}",
+          "action": "bc:toggle:{identifier}:{key}",
+          "kind": "toggle",
+          "source": "modbot/broadcasts.py:59"
+        },
+        {
+          "id": "broadcasts.broadcast_view.60",
+          "label": "Предпросмотр",
+          "action": "bc:preview:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:60"
+        },
+        {
+          "id": "broadcasts.broadcast_view.61",
+          "label": "Отправить сейчас",
+          "action": "bc:now:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:61"
+        },
+        {
+          "id": "broadcasts.broadcast_view.61",
+          "label": "Запланировать",
+          "action": "bc:time:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:61"
+        },
+        {
+          "id": "broadcasts.broadcast_view.67",
+          "label": "Отменить рассылку",
+          "action": "bc:cancel:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:67"
+        },
+        {
+          "id": "broadcasts.broadcast_view.68",
+          "label": "Обновить статус",
+          "action": "bc:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:68"
+        },
+        {
+          "id": "broadcasts.broadcast_view.68",
+          "label": "Назад",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:68"
+        }
+      ]
+    },
+    {
+      "id": "broadcasts.broadcast_confirm",
+      "source": "modbot/broadcasts.py:71",
+      "buttons": [
+        {
+          "id": "broadcasts.broadcast_confirm.80",
+          "label": "Подтвердить",
+          "action": "bc:confirm:{identifier}:{when}:{broadcast_digest(row)}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:80"
+        },
+        {
+          "id": "broadcasts.broadcast_confirm.81",
+          "label": "Назад",
+          "action": "bc:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:81"
+        }
+      ]
+    },
+    {
+      "id": "broadcasts.broadcast_callback",
+      "source": "modbot/broadcasts.py:83",
+      "buttons": [
+        {
+          "id": "broadcasts.broadcast_callback.100",
+          "label": "Назад",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:100"
+        },
+        {
+          "id": "broadcasts.broadcast_callback.117",
+          "label": "Назад",
+          "action": "bc:view:{identifier}",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:117"
+        },
+        {
+          "id": "broadcasts.broadcast_callback.128",
+          "label": "Назад",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:128"
+        }
+      ]
+    },
+    {
+      "id": "broadcasts.broadcast_input",
+      "source": "modbot/broadcasts.py:131",
+      "buttons": [
+        {
+          "id": "broadcasts.broadcast_input.162",
+          "label": "Назад",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/broadcasts.py:162"
+        }
+      ]
+    },
+    {
+      "id": "chat_presence.hidden_chat_list",
+      "source": "modbot/chat_presence.py:118",
+      "buttons": [
+        {
+          "id": "chat_presence.hidden_chat_list.123",
+          "label": "{self.e(user, 'panel_restore') + ' · ' + group['title'][:35]}",
+          "action": "cp:restore:{group['id']}",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:123"
+        },
+        {
+          "id": "chat_presence.hidden_chat_list.125",
+          "label": "←",
+          "action": "cp:list:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:125"
+        },
+        {
+          "id": "chat_presence.hidden_chat_list.126",
+          "label": "→",
+          "action": "cp:list:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:126"
+        }
+      ]
+    },
+    {
+      "id": "chat_presence.chat_presence_callback",
+      "source": "modbot/chat_presence.py:131",
+      "buttons": [
+        {
+          "id": "chat_presence.chat_presence_callback.146",
+          "label": "Подтвердить",
+          "action": "cp:hide:{chat}",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:146"
+        },
+        {
+          "id": "chat_presence.chat_presence_callback.146",
+          "label": "Назад",
+          "action": "group:{chat}",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:146"
+        },
+        {
+          "id": "chat_presence.chat_presence_callback.157",
+          "label": "Скрытые чаты",
+          "action": "cp:list:0",
+          "kind": "callback",
+          "source": "modbot/chat_presence.py:157"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.economy_back",
+      "source": "modbot/economy_panel.py:29",
+      "buttons": [
+        {
+          "id": "economy_panel.economy_back.38",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:38"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.economic_overview",
+      "source": "modbot/economy_panel.py:108",
+      "buttons": [
+        {
+          "id": "economy_panel.economic_overview.112",
+          "label": "{self.e(user, key)}",
+          "action": "ec:{op}:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:112"
+        },
+        {
+          "id": "economy_panel.economic_overview.114",
+          "label": "Функции группы",
+          "action": "ec:features:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:114"
+        },
+        {
+          "id": "economy_panel.economic_overview.115",
+          "label": "Экономика и магазин",
+          "action": "ec:group:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:115"
+        },
+        {
+          "id": "economy_panel.economic_overview.117",
+          "label": "Посмотреть тарифы",
+          "action": "ec:access:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:117"
+        },
+        {
+          "id": "economy_panel.economic_overview.119",
+          "label": "Розыгрыши",
+          "action": "ec:givecreate:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:119"
+        },
+        {
+          "id": "economy_panel.economic_overview.120",
+          "label": "Закрыть меню",
+          "action": "ec:close:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:120"
+        },
+        {
+          "id": "economy_panel.economic_overview.121",
+          "label": "Управление группой",
+          "action": "https://t.me/{self.bot_username}?start=manage_{chat}",
+          "kind": "link",
+          "source": "modbot/economy_panel.py:121"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.economic_wallet",
+      "source": "modbot/economy_panel.py:128",
+      "buttons": [
+        {
+          "id": "economy_panel.economic_wallet.157",
+          "label": "Уровень и развитие",
+          "action": "ec:profile:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:157"
+        },
+        {
+          "id": "economy_panel.economic_wallet.159",
+          "label": "Улучшения работы и обучения",
+          "action": "ec:dailyupgrades:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:159"
+        },
+        {
+          "id": "economy_panel.economic_wallet.164",
+          "label": "{label}",
+          "action": "ec:exchange:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:164"
+        },
+        {
+          "id": "economy_panel.economic_wallet.168",
+          "label": "Перевести",
+          "action": "ec:transfer:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:168"
+        },
+        {
+          "id": "economy_panel.economic_wallet.169",
+          "label": "Принимать ⚡",
+          "action": "ec:receiving:0",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:169"
+        },
+        {
+          "id": "economy_panel.economic_wallet.170",
+          "label": "Маркет ферм",
+          "action": "ec:market:{chat if context else 0}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:170"
+        },
+        {
+          "id": "economy_panel.economic_wallet.170",
+          "label": "Автофермы",
+          "action": "ec:farms:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:170"
+        },
+        {
+          "id": "economy_panel.economic_wallet.171",
+          "label": "{self.e(user, key)}",
+          "action": "ec:{key}:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:171"
+        },
+        {
+          "id": "economy_panel.economic_wallet.175",
+          "label": "Выпустить фермы",
+          "action": "ec:mint:0",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:175"
+        },
+        {
+          "id": "economy_panel.economic_wallet.177",
+          "label": "Покупки и отмена",
+          "action": "pc:list:0:0",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:177"
+        },
+        {
+          "id": "economy_panel.economic_wallet.178",
+          "label": "Вернуть Stars",
+          "action": "ec:refunds:0:0",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:178"
+        },
+        {
+          "id": "economy_panel.economic_wallet.180",
+          "label": "Покупки и отмена",
+          "action": "https://t.me/{self.bot_username}?start=purchases",
+          "kind": "link",
+          "source": "modbot/economy_panel.py:180"
+        },
+        {
+          "id": "economy_panel.economic_wallet.185",
+          "label": "{group['title'][:40]}",
+          "action": "ec:wallet:{group['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:185"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel._economy_callback",
+      "source": "modbot/economy_panel.py:212",
+      "buttons": [
+        {
+          "id": "economy_panel._economy_callback.265",
+          "label": "Подтвердить",
+          "action": "ec:studypay:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:265"
+        },
+        {
+          "id": "economy_panel._economy_callback.288",
+          "label": "Подтвердить",
+          "action": "ec:rebirthpay:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:288"
+        },
+        {
+          "id": "economy_panel._economy_callback.377",
+          "label": "{label} · {display_money(price)} ⚡",
+          "action": "ec:checkout:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:377"
+        },
+        {
+          "id": "economy_panel._economy_callback.414",
+          "label": "Автофермы",
+          "action": "ec:farms:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:414"
+        },
+        {
+          "id": "economy_panel._economy_callback.421",
+          "label": "C₲",
+          "action": "ec:sellcoins:{chat}:{farm_id}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:421"
+        },
+        {
+          "id": "economy_panel._economy_callback.421",
+          "label": "⚡",
+          "action": "ec:sellenergy:{chat}:{farm_id}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:421"
+        },
+        {
+          "id": "economy_panel._economy_callback.439",
+          "label": "{row['title']}",
+          "action": "ec:farm:{row['id']}:{listing['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:439"
+        },
+        {
+          "id": "economy_panel._economy_callback.441",
+          "label": "Указать ID группы",
+          "action": "ec:farmchoose:0:{listing['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:441"
+        },
+        {
+          "id": "economy_panel._economy_callback.448",
+          "label": "Подтвердить",
+          "action": "ec:checkout:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:448"
+        },
+        {
+          "id": "economy_panel._economy_callback.471",
+          "label": "{'#' + str(order['id']) + ' ↻'}",
+          "action": "ec:retryorder:{chat}:{order['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:471"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.economic_group",
+      "source": "modbot/economy_panel.py:524",
+      "buttons": [
+        {
+          "id": "economy_panel.economic_group.525",
+          "label": "{self.e(user, key)}",
+          "action": "ec:{op}:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:525"
+        },
+        {
+          "id": "economy_panel.economic_group.528",
+          "label": "Доступ к боту",
+          "action": "ec:access:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:528"
+        },
+        {
+          "id": "economy_panel.economic_group.529",
+          "label": "Управление магазином",
+          "action": "ec:shopmanage:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:529"
+        },
+        {
+          "id": "economy_panel.economic_group.530",
+          "label": "{self.e(user, 'transfer') + ' · ' + self.e(user, 'group_funds')}",
+          "action": "ec:treasurytransfer:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:530"
+        },
+        {
+          "id": "economy_panel.economic_group.531",
+          "label": "Принимать ⚡",
+          "action": "ec:groupreceiving:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:531"
+        },
+        {
+          "id": "economy_panel.economic_group.532",
+          "label": "AIChating+",
+          "action": "ec:aisub:{chat}:ai_month",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:532"
+        },
+        {
+          "id": "economy_panel.economic_group.532",
+          "label": "AIChating Pro",
+          "action": "ec:aisub:{chat}:ai_pro_month",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:532"
+        },
+        {
+          "id": "economy_panel.economic_group.533",
+          "label": "DeepSeek · 1000 проверок модерации",
+          "action": "ec:aisub:{chat}:ds_pack",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:533"
+        },
+        {
+          "id": "economy_panel.economic_group.534",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:534"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_group_features",
+      "source": "modbot/economy_panel.py:537",
+      "buttons": [
+        {
+          "id": "economy_panel.show_group_features.541",
+          "label": "{self.e(user, label) + ' · ' + self.e(user, 'enabled' if enabled else 'off')}",
+          "action": "ec:featuretoggle:{chat}:{key}",
+          "kind": "toggle",
+          "source": "modbot/economy_panel.py:541"
+        },
+        {
+          "id": "economy_panel.show_group_features.543",
+          "label": "Настроить отдельные команды",
+          "action": "ec:commands:{chat}:0",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:543"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.command_settings",
+      "source": "modbot/economy_panel.py:547",
+      "buttons": [
+        {
+          "id": "economy_panel.command_settings.557",
+          "label": "{title + (' · /' + code if '.' not in code else '')}",
+          "action": "ec:cmdtoggle:{chat}:{index}:{page}",
+          "kind": "toggle",
+          "source": "modbot/economy_panel.py:557"
+        },
+        {
+          "id": "economy_panel.command_settings.558",
+          "label": "{self.e(user, 'visible' if shown else 'hidden')}",
+          "action": "ec:cmdvisible:{chat}:{index}:{page}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:558"
+        },
+        {
+          "id": "economy_panel.command_settings.561",
+          "label": "←",
+          "action": "ec:commands:{chat}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:561"
+        },
+        {
+          "id": "economy_panel.command_settings.563",
+          "label": "→",
+          "action": "ec:commands:{chat}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:563"
+        },
+        {
+          "id": "economy_panel.command_settings.566",
+          "label": "Функции группы",
+          "action": "ec:features:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:566"
+        },
+        {
+          "id": "economy_panel.command_settings.567",
+          "label": "Назад",
+          "action": "ec:group:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:567"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_goods",
+      "source": "modbot/economy_panel.py:583",
+      "buttons": [
+        {
+          "id": "economy_panel.show_goods.594",
+          "label": "{label}",
+          "action": "ec:good:{chat}:{good['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:594"
+        },
+        {
+          "id": "economy_panel.show_goods.597",
+          "label": "←",
+          "action": "ec:goods:{chat}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:597"
+        },
+        {
+          "id": "economy_panel.show_goods.599",
+          "label": "→",
+          "action": "ec:goods:{chat}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:599"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_shop_management",
+      "source": "modbot/economy_panel.py:607",
+      "buttons": [
+        {
+          "id": "economy_panel.show_shop_management.609",
+          "label": "Новый товар / звание",
+          "action": "ec:goodsadd:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:609"
+        },
+        {
+          "id": "economy_panel.show_shop_management.610",
+          "label": "Покупки участников",
+          "action": "ec:orders:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:610"
+        },
+        {
+          "id": "economy_panel.show_shop_management.611",
+          "label": "Открыть витрину",
+          "action": "ec:shop:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:611"
+        },
+        {
+          "id": "economy_panel.show_shop_management.614",
+          "label": "{good['name'][:35] + ' · ' + state}",
+          "action": "ec:goodtoggle:{chat}:{good['id']}",
+          "kind": "toggle",
+          "source": "modbot/economy_panel.py:614"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_farms",
+      "source": "modbot/economy_panel.py:619",
+      "buttons": [
+        {
+          "id": "economy_panel.show_farms.633",
+          "label": "{self.e(user, 'claim') + f\" #{farm['id']}\"}",
+          "action": "ec:claim:{target}:{farm['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:633"
+        },
+        {
+          "id": "economy_panel.show_farms.635",
+          "label": "Продать",
+          "action": "ec:sell:{chat}:{farm['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:635"
+        },
+        {
+          "id": "economy_panel.show_farms.640",
+          "label": "{'#' + str(farm['id']) + ' · ' + self.e(user, 'farm_bind')}",
+          "action": "ec:farmbind:0:{farm['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:640"
+        },
+        {
+          "id": "economy_panel.show_farms.641",
+          "label": "{self.e(user, 'sell') + f\" #{farm['id']}\"}",
+          "action": "ec:sell:{chat}:{farm['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:641"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_market",
+      "source": "modbot/economy_panel.py:646",
+      "buttons": [
+        {
+          "id": "economy_panel.show_market.655",
+          "label": "{listing['name'] + ' · ' + display_money(price) + ' ' + ASSETS[listing['asset']]}",
+          "action": "ec:farm:{chat}:{listing['id']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:655"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_checkout",
+      "source": "modbot/economy_panel.py:667",
+      "buttons": [
+        {
+          "id": "economy_panel.show_checkout.706",
+          "label": "Оплатить из моего кошелька",
+          "action": "ec:pay:{chat}:{token}:self",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:706"
+        },
+        {
+          "id": "economy_panel.show_checkout.708",
+          "label": "Оплатить из казны группы",
+          "action": "ec:pay:{chat}:{token}:group",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:708"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_transfer_checkout",
+      "source": "modbot/economy_panel.py:713",
+      "buttons": [
+        {
+          "id": "economy_panel.show_transfer_checkout.724",
+          "label": "Подтвердить перевод",
+          "action": "ec:paytransfer:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:724"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.pay_economic_quote",
+      "source": "modbot/economy_panel.py:726",
+      "buttons": [
+        {
+          "id": "economy_panel.pay_economic_quote.795",
+          "label": "Улучшения работы и обучения",
+          "action": "ec:dailyupgrades:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:795"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_progression",
+      "source": "modbot/economy_panel.py:800",
+      "buttons": [
+        {
+          "id": "economy_panel.show_progression.825",
+          "label": "Забрать награду · уровень {level}",
+          "action": "ec:rewardclaim:{chat}:{reward['level']}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:825"
+        },
+        {
+          "id": "economy_panel.show_progression.827",
+          "label": "Улучшения работы и обучения",
+          "action": "ec:dailyupgrades:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:827"
+        },
+        {
+          "id": "economy_panel.show_progression.829",
+          "label": "Перерождение · 500 очков",
+          "action": "ec:rebirth:{chat}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:829"
+        }
+      ]
+    },
+    {
+      "id": "economy_panel.show_daily_upgrades",
+      "source": "modbot/economy_panel.py:833",
+      "buttons": [
+        {
+          "id": "economy_panel.show_daily_upgrades.845",
+          "label": "{kind}: −1ч · {price} C₲",
+          "action": "ec:dailyupgrade:{chat}:{kind}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:845"
+        },
+        {
+          "id": "economy_panel.show_daily_upgrades.855",
+          "label": "{name} · {price} очков",
+          "action": "ec:studyupgrade:{chat}:{kind}",
+          "kind": "callback",
+          "source": "modbot/economy_panel.py:855"
+        }
+      ]
+    },
+    {
+      "id": "energy_refunds.show_energy_refunds",
+      "source": "modbot/energy_refunds.py:12",
+      "buttons": [
+        {
+          "id": "energy_refunds.show_energy_refunds.24",
+          "label": "{label}",
+          "action": "ec:refundview:0:{purchase['id']}:{page}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:24"
+        },
+        {
+          "id": "energy_refunds.show_energy_refunds.27",
+          "label": "←",
+          "action": "ec:refunds:0:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:27"
+        },
+        {
+          "id": "energy_refunds.show_energy_refunds.29",
+          "label": "→",
+          "action": "ec:refunds:0:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:29"
+        }
+      ]
+    },
+    {
+      "id": "energy_refunds.show_energy_refund",
+      "source": "modbot/energy_refunds.py:38",
+      "buttons": [
+        {
+          "id": "energy_refunds.show_energy_refund.51",
+          "label": "Проверить возврат",
+          "action": "ec:refundgo:0:{purchase_id}:{page}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:51"
+        },
+        {
+          "id": "energy_refunds.show_energy_refund.58",
+          "label": "Вернуть {stars} ⭐",
+          "action": "ec:refundgo:0:{purchase_id}:{page}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:58"
+        },
+        {
+          "id": "energy_refunds.show_energy_refund.61",
+          "label": "Назад",
+          "action": "ec:refunds:0:{page}",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:61"
+        },
+        {
+          "id": "energy_refunds.show_energy_refund.61",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/energy_refunds.py:61"
+        }
+      ]
+    },
+    {
+      "id": "giveaways.giveaway_photo_form",
+      "source": "modbot/giveaways.py:157",
+      "buttons": [
+        {
+          "id": "giveaways.giveaway_photo_form.167",
+          "label": "Без картинки",
+          "action": "ec:givepreview:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:167"
+        }
+      ]
+    },
+    {
+      "id": "giveaways.show_giveaway_preview",
+      "source": "modbot/giveaways.py:187",
+      "buttons": [
+        {
+          "id": "giveaways.show_giveaway_preview.200",
+          "label": "Опубликовать розыгрыш",
+          "action": "ec:giveconfirm:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:200"
+        },
+        {
+          "id": "giveaways.show_giveaway_preview.201",
+          "label": "Добавить / заменить картинку",
+          "action": "ec:givephoto:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:201"
+        }
+      ]
+    },
+    {
+      "id": "giveaways.open_giveaway_form",
+      "source": "modbot/giveaways.py:230",
+      "buttons": [
+        {
+          "id": "giveaways.open_giveaway_form.232",
+          "label": "Доступ к боту",
+          "action": "ec:giveaccess:{chat}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:232"
+        },
+        {
+          "id": "giveaways.open_giveaway_form.233",
+          "label": "Монеты, молнии или свой приз",
+          "action": "ec:giveordinary:{chat}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:233"
+        }
+      ]
+    },
+    {
+      "id": "giveaways.access_prizes_callback",
+      "source": "modbot/giveaways.py:237",
+      "buttons": [
+        {
+          "id": "giveaways.access_prizes_callback.260",
+          "label": "{g['title']}",
+          "action": "gp:claim:{giveaway}:{g['id']}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:260"
+        },
+        {
+          "id": "giveaways.access_prizes_callback.261",
+          "label": "←",
+          "action": "gp:groups:{giveaway}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:261"
+        },
+        {
+          "id": "giveaways.access_prizes_callback.262",
+          "label": "→",
+          "action": "gp:groups:{giveaway}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:262"
+        },
+        {
+          "id": "giveaways.access_prizes_callback.263",
+          "label": "Назад",
+          "action": "gp:list",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:263"
+        },
+        {
+          "id": "giveaways.access_prizes_callback.266",
+          "label": "{f\"#{p['giveaway_id']} · \" + self.e(user, 'tier_' + p['tier']) + ' · ' + self.grant_term(user, p['plan'])}",
+          "action": "gp:groups:{p['giveaway_id']}",
+          "kind": "callback",
+          "source": "modbot/giveaways.py:266"
+        }
+      ]
+    },
+    {
+      "id": "group_tools.rules_edit_command",
+      "source": "modbot/group_tools.py:174",
+      "buttons": [
+        {
+          "id": "group_tools.rules_edit_command.179",
+          "label": "{g['title'][:40]}",
+          "action": "memberedit:{g['id']}",
+          "kind": "callback",
+          "source": "modbot/group_tools.py:179"
+        }
+      ]
+    },
+    {
+      "id": "guide_panel.show_guide",
+      "source": "modbot/guide_panel.py:12",
+      "buttons": [
+        {
+          "id": "guide_panel.show_guide.20",
+          "label": "{name}",
+          "action": "gd:{chat}:{slug}:0",
+          "kind": "callback",
+          "source": "modbot/guide_panel.py:20"
+        },
+        {
+          "id": "guide_panel.show_guide.26",
+          "label": "←",
+          "action": "gd:{chat}:{category}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/guide_panel.py:26"
+        },
+        {
+          "id": "guide_panel.show_guide.27",
+          "label": "→",
+          "action": "gd:{chat}:{category}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/guide_panel.py:27"
+        },
+        {
+          "id": "guide_panel.show_guide.29",
+          "label": "Все разделы",
+          "action": "gd:{chat}:index:0",
+          "kind": "callback",
+          "source": "modbot/guide_panel.py:29"
+        }
+      ]
+    },
+    {
+      "id": "help_panel.show_help",
+      "source": "modbot/help_panel.py:57",
+      "buttons": [
+        {
+          "id": "help_panel.show_help.78",
+          "label": "{self.e(user, 'help_category_' + category)}",
+          "action": "hp:{chat}:{category}:0",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:78"
+        },
+        {
+          "id": "help_panel.show_help.79",
+          "label": "Подробное руководство",
+          "action": "gd:{chat}:index:0",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:79"
+        },
+        {
+          "id": "help_panel.show_help.80",
+          "label": "Все команды",
+          "action": "hp:{chat}:all:0",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:80"
+        },
+        {
+          "id": "help_panel.show_help.89",
+          "label": "←",
+          "action": "hp:{chat}:{section}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:89"
+        },
+        {
+          "id": "help_panel.show_help.90",
+          "label": "→",
+          "action": "hp:{chat}:{section}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:90"
+        },
+        {
+          "id": "help_panel.show_help.92",
+          "label": "Разделы справки",
+          "action": "hp:{chat}:root:0",
+          "kind": "callback",
+          "source": "modbot/help_panel.py:92"
+        }
+      ]
+    },
+    {
+      "id": "investments.show_investments",
+      "source": "modbot/investments.py:26",
+      "buttons": [
+        {
+          "id": "investments.show_investments.31",
+          "label": "{g['title']}",
+          "action": "ec:investments:{g['id']}",
+          "kind": "callback",
+          "source": "modbot/investments.py:31"
+        },
+        {
+          "id": "investments.show_investments.40",
+          "label": "{c['name'] + ' · ' + display_money(c['price']) + ' C₲'}",
+          "action": "ec:investcompany:{chat}:{c['id']}",
+          "kind": "callback",
+          "source": "modbot/investments.py:40"
+        },
+        {
+          "id": "investments.show_investments.42",
+          "label": "←",
+          "action": "ec:investments:{chat}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/investments.py:42"
+        },
+        {
+          "id": "investments.show_investments.43",
+          "label": "→",
+          "action": "ec:investments:{chat}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/investments.py:43"
+        }
+      ]
+    },
+    {
+      "id": "investments.show_investment_company",
+      "source": "modbot/investments.py:51",
+      "buttons": [
+        {
+          "id": "investments.show_investment_company.61",
+          "label": "Инвестировать",
+          "action": "ec:investbuy:{chat}:{company}",
+          "kind": "callback",
+          "source": "modbot/investments.py:61"
+        },
+        {
+          "id": "investments.show_investment_company.62",
+          "label": "Продать все доли",
+          "action": "ec:investsell:{chat}:{company}",
+          "kind": "callback",
+          "source": "modbot/investments.py:62"
+        }
+      ]
+    },
+    {
+      "id": "investments.investment_checkout",
+      "source": "modbot/investments.py:66",
+      "buttons": [
+        {
+          "id": "investments.investment_checkout.82",
+          "label": "Подтвердить",
+          "action": "ec:investpay:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/investments.py:82"
+        }
+      ]
+    },
+    {
+      "id": "investments.investment_callback",
+      "source": "modbot/investments.py:85",
+      "buttons": [
+        {
+          "id": "investments.investment_callback.104",
+          "label": "📈 Инвестиции",
+          "action": "ec:investcompany:{chat}:{payload['company']}",
+          "kind": "callback",
+          "source": "modbot/investments.py:104"
+        }
+      ]
+    },
+    {
+      "id": "knowledge.notify_deletion",
+      "source": "modbot/knowledge.py:144",
+      "buttons": [
+        {
+          "id": "knowledge.notify_deletion.165",
+          "label": "{tr(language, 'kb_report_add')}",
+          "action": "kbfeedback:{message.chat.id}:{report_id}:manual",
+          "kind": "callback",
+          "source": "modbot/knowledge.py:165"
+        },
+        {
+          "id": "knowledge.notify_deletion.166",
+          "label": "{tr(language, 'kb_dislike')}",
+          "action": "kbfeedback:{message.chat.id}:{report_id}:edit",
+          "kind": "callback",
+          "source": "modbot/knowledge.py:166"
+        },
+        {
+          "id": "knowledge.notify_deletion.167",
+          "label": "{tr(language, 'kb_report_deepseek')}",
+          "action": "kbfeedback:{message.chat.id}:{report_id}:ai",
+          "kind": "callback",
+          "source": "modbot/knowledge.py:167"
+        }
+      ]
+    },
+    {
+      "id": "knowledge.notify_proposal",
+      "source": "modbot/knowledge.py:180",
+      "buttons": [
+        {
+          "id": "knowledge.notify_proposal.187",
+          "label": "{tr(language, 'kb_review_open')}",
+          "action": "kbreview:0:{proposal_id}",
+          "kind": "callback",
+          "source": "modbot/knowledge.py:187"
+        }
+      ]
+    },
+    {
+      "id": "knowledge_panel.kb_menu",
+      "source": "modbot/knowledge_panel.py:25",
+      "buttons": [
+        {
+          "id": "knowledge_panel.kb_menu.27",
+          "label": "Посмотреть",
+          "action": "kbpage:{scope}:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:27"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.28",
+          "label": "Добавить",
+          "action": "kbadd:{0 if user_id == OWNER_ID else scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:28"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.29",
+          "label": "Удалить",
+          "action": "kbdelete:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:29"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.30",
+          "label": "Найти",
+          "action": "kbfind:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:30"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.32",
+          "label": "Что удалять: категории",
+          "action": "kbpolicies:{scope}:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:32"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.34",
+          "label": "Разметить с DeepSeek",
+          "action": "kbauto:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:34"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.35",
+          "label": "На одобрении",
+          "action": "kbreviews:0:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:35"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.37",
+          "label": "Общая база",
+          "action": "kb:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:37"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.41",
+          "label": "🔒 {name}",
+          "action": "paidfeature:{scope}:knowledge",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:41"
+        },
+        {
+          "id": "knowledge_panel.kb_menu.42",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:42"
+        }
+      ]
+    },
+    {
+      "id": "knowledge_panel.kb_callback",
+      "source": "modbot/knowledge_panel.py:44",
+      "buttons": [
+        {
+          "id": "knowledge_panel.kb_callback.62",
+          "label": "#{row['id']} · {preview[:35]}",
+          "action": "kbentry:{scope}:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:62"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.71",
+          "label": "Найти",
+          "action": "kbfind:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:71"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.71",
+          "label": "Назад",
+          "action": "kb:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:71"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.78",
+          "label": "Удалить",
+          "action": "kbdeleteconfirm:{scope}:{entry['id']}:{entry['revision']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:78"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.79",
+          "label": "Назад",
+          "action": "kbpage:{scope}:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:79"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.111",
+          "label": "{self.t(user_id, 'category_remove' if blocked else 'category_allow') + ': ' + category_name(code, self.store.language(user_id))}",
+          "action": "kbpolicy:{scope}:{index}:{page}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:111"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.114",
+          "label": "←",
+          "action": "kbpolicies:{scope}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:114"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.115",
+          "label": "→",
+          "action": "kbpolicies:{scope}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:115"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.117",
+          "label": "Назад",
+          "action": "kb:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:117"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.222",
+          "label": "Посмотреть",
+          "action": "kbpage:{scope}:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:222"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.223",
+          "label": "Назад",
+          "action": "kb:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:223"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.233",
+          "label": "{f\"#{r['id']} · \" + json.loads(r['snapshot'])['text'][:35]}",
+          "action": "kbreview:0:{r['id']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:233"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.235",
+          "label": "←",
+          "action": "kbreviews:0:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:235"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.236",
+          "label": "→",
+          "action": "kbreviews:0:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:236"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.238",
+          "label": "Назад",
+          "action": "kb:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:238"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.259",
+          "label": "Применить",
+          "action": "kbapprove:0:{proposal['id']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:259"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.260",
+          "label": "Отклонить",
+          "action": "kbreject:0:{proposal['id']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:260"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.261",
+          "label": "Изменить",
+          "action": "kbeditproposal:0:{proposal['id']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:261"
+        },
+        {
+          "id": "knowledge_panel.kb_callback.262",
+          "label": "Назад",
+          "action": "kbreviews:0:0",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:262"
+        }
+      ]
+    },
+    {
+      "id": "knowledge_panel.kb_selector",
+      "source": "modbot/knowledge_panel.py:264",
+      "buttons": [
+        {
+          "id": "knowledge_panel.kb_selector.272",
+          "label": "{category_name(code, self.store.language(user_id))}",
+          "action": "kbcat:{scope}:{token}:{index}:{draft['revision']}:{page}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:272"
+        },
+        {
+          "id": "knowledge_panel.kb_selector.276",
+          "label": "←",
+          "action": "kbselect:{scope}:{token}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:276"
+        },
+        {
+          "id": "knowledge_panel.kb_selector.277",
+          "label": "→",
+          "action": "kbselect:{scope}:{token}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:277"
+        },
+        {
+          "id": "knowledge_panel.kb_selector.279",
+          "label": "Ввести категории текстом",
+          "action": "kbeditcats:{scope}:{token}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:279"
+        },
+        {
+          "id": "knowledge_panel.kb_selector.280",
+          "label": "Применить",
+          "action": "kbconfirm:{scope}:{token}:{draft['revision']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:280"
+        },
+        {
+          "id": "knowledge_panel.kb_selector.281",
+          "label": "Назад",
+          "action": "kb:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:281"
+        }
+      ]
+    },
+    {
+      "id": "knowledge_panel.kb_input",
+      "source": "modbot/knowledge_panel.py:284",
+      "buttons": [
+        {
+          "id": "knowledge_panel.kb_input.299",
+          "label": "Удалить",
+          "action": "kbdeleteconfirm:{scope}:{entry['id']}:{entry['revision']}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:299"
+        },
+        {
+          "id": "knowledge_panel.kb_input.300",
+          "label": "Назад",
+          "action": "kb:{scope}",
+          "kind": "callback",
+          "source": "modbot/knowledge_panel.py:300"
+        }
+      ]
+    },
+    {
+      "id": "navigation.navigation_buttons",
+      "source": "modbot/navigation.py:164",
+      "buttons": [
+        {
+          "id": "navigation.navigation_buttons.184",
+          "label": "Назад",
+          "action": "nav:back:{token}:{revision}",
+          "kind": "callback",
+          "source": "modbot/navigation.py:184"
+        },
+        {
+          "id": "navigation.navigation_buttons.190",
+          "label": "Главная",
+          "action": "nav:home:{token}:{revision}",
+          "kind": "callback",
+          "source": "modbot/navigation.py:190"
+        }
+      ]
+    },
+    {
+      "id": "owner_grant_panel.owner_grant_groups",
+      "source": "modbot/owner_grant_panel.py:18",
+      "buttons": [
+        {
+          "id": "owner_grant_panel.owner_grant_groups.22",
+          "label": "{row['title']}",
+          "action": "og:tier:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:22"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_groups.24",
+          "label": "←",
+          "action": "og:groups:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:24"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_groups.25",
+          "label": "→",
+          "action": "og:groups:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:25"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_groups.27",
+          "label": "{'Разыграть доступ · ' + g['title'][:28]}",
+          "action": "ec:giveaccess:{g['id']}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:27"
+        }
+      ]
+    },
+    {
+      "id": "owner_grant_panel.owner_grant_callback",
+      "source": "modbot/owner_grant_panel.py:31",
+      "buttons": [
+        {
+          "id": "owner_grant_panel.owner_grant_callback.50",
+          "label": "История бесплатной выдачи",
+          "action": "og:history:{quote['chat_id']}:0",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:50"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.51",
+          "label": "Назад",
+          "action": "og:tier:{quote['chat_id']}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:51"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.60",
+          "label": "Подтвердить",
+          "action": "og:revoke:{identifier}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:60"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.60",
+          "label": "Назад",
+          "action": "og:history:{row['chat_id']}:0",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:60"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.66",
+          "label": "{self.e(user, 'tier_' + tier)}",
+          "action": "og:term:{chat}:{tier}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:66"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.67",
+          "label": "История бесплатной выдачи",
+          "action": "og:history:{chat}:0",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:67"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.67",
+          "label": "Назад",
+          "action": "og:groups:0",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:67"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.72",
+          "label": "{self.grant_term(user, plan)}",
+          "action": "og:mode:{chat}:{tier}:{plan}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:72"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.73",
+          "label": "Назад",
+          "action": "og:tier:{chat}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:73"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.77",
+          "label": "{self.e(user, 'tier_start_' + mode)}",
+          "action": "og:confirm:{chat}:{tier}:{plan}:{mode}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:77"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.78",
+          "label": "Назад",
+          "action": "og:term:{chat}:{tier}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:78"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.86",
+          "label": "Подтвердить",
+          "action": "og:grant:{token}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:86"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.86",
+          "label": "Назад",
+          "action": "og:mode:{chat}:{tier}:{plan}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:86"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_callback.90",
+          "label": "Назад",
+          "action": "og:groups:0",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:90"
+        }
+      ]
+    },
+    {
+      "id": "owner_grant_panel.owner_grant_history",
+      "source": "modbot/owner_grant_panel.py:93",
+      "buttons": [
+        {
+          "id": "owner_grant_panel.owner_grant_history.102",
+          "label": "{self.e(user, 'owner_grant_revoke') + ' #' + str(row['id'])}",
+          "action": "og:revokeask:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:102"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_history.104",
+          "label": "←",
+          "action": "og:history:{chat}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:104"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_history.105",
+          "label": "→",
+          "action": "og:history:{chat}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:105"
+        },
+        {
+          "id": "owner_grant_panel.owner_grant_history.107",
+          "label": "Назад",
+          "action": "og:tier:{chat}",
+          "kind": "callback",
+          "source": "modbot/owner_grant_panel.py:107"
+        }
+      ]
+    },
+    {
+      "id": "panel.miniapp_command",
+      "source": "modbot/panel.py:128",
+      "buttons": [
+        {
+          "id": "panel.miniapp_command.133",
+          "label": "Открыть мини-приложение",
+          "action": "https://t.me/{username}?startapp",
+          "kind": "link",
+          "source": "modbot/panel.py:133"
+        }
+      ]
+    },
+    {
+      "id": "panel.register_commands",
+      "source": "modbot/panel.py:135",
+      "buttons": [
+        {
+          "id": "panel.register_commands.138",
+          "label": "start",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/panel.py:138"
+        },
+        {
+          "id": "panel.register_commands.139",
+          "label": "version",
+          "action": "about",
+          "kind": "callback",
+          "source": "modbot/panel.py:139"
+        },
+        {
+          "id": "panel.register_commands.140",
+          "label": "buy",
+          "action": "access",
+          "kind": "callback",
+          "source": "modbot/panel.py:140"
+        },
+        {
+          "id": "panel.register_commands.140",
+          "label": "paysupport",
+          "action": "access",
+          "kind": "callback",
+          "source": "modbot/panel.py:140"
+        }
+      ]
+    },
+    {
+      "id": "panel.back",
+      "source": "modbot/panel.py:251",
+      "buttons": [
+        {
+          "id": "panel.back.254",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/panel.py:254"
+        },
+        {
+          "id": "panel.back.255",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/panel.py:255"
+        }
+      ]
+    },
+    {
+      "id": "panel._home",
+      "source": "modbot/panel.py:257",
+      "buttons": [
+        {
+          "id": "panel._home.263",
+          "label": "Скрытые чаты",
+          "action": "cp:list:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:263"
+        },
+        {
+          "id": "panel._home.265",
+          "label": "Подключить / продлить чат",
+          "action": "connect_paid",
+          "kind": "callback",
+          "source": "modbot/panel.py:265"
+        },
+        {
+          "id": "panel._home.266",
+          "label": "Доступ и оплата",
+          "action": "access",
+          "kind": "callback",
+          "source": "modbot/panel.py:266"
+        },
+        {
+          "id": "panel._home.267",
+          "label": "Язык",
+          "action": "languages",
+          "kind": "callback",
+          "source": "modbot/panel.py:267"
+        },
+        {
+          "id": "panel._home.267",
+          "label": "О боте и изменения",
+          "action": "about",
+          "kind": "callback",
+          "source": "modbot/panel.py:267"
+        },
+        {
+          "id": "panel._home.270",
+          "label": "База знаний",
+          "action": "kb:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:270"
+        },
+        {
+          "id": "panel._home.271",
+          "label": "Настройки бота",
+          "action": "settings",
+          "kind": "callback",
+          "source": "modbot/panel.py:271"
+        },
+        {
+          "id": "panel._home.272",
+          "label": "Рассылки",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/panel.py:272"
+        },
+        {
+          "id": "panel._home.273",
+          "label": "Все покупки · владелец",
+          "action": "pc:list:0:1",
+          "kind": "callback",
+          "source": "modbot/panel.py:273"
+        },
+        {
+          "id": "panel._home.274",
+          "label": "Выдать доступ бесплатно",
+          "action": "og:groups:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:274"
+        },
+        {
+          "id": "panel._home.276",
+          "label": "Выигранные доступы",
+          "action": "gp:list",
+          "kind": "callback",
+          "source": "modbot/panel.py:276"
+        },
+        {
+          "id": "panel._home.277",
+          "label": "Рекламный кабинет",
+          "action": "ad:list:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:277"
+        },
+        {
+          "id": "panel._home.278",
+          "label": "Предложить фразу",
+          "action": "kbpublic",
+          "kind": "callback",
+          "source": "modbot/panel.py:278"
+        },
+        {
+          "id": "panel._home.279",
+          "label": "Кошелёк",
+          "action": "ec:wallet:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:279"
+        },
+        {
+          "id": "panel._home.280",
+          "label": "Подключить / продлить чат",
+          "action": "ec:connect:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:280"
+        }
+      ]
+    },
+    {
+      "id": "panel.panel",
+      "source": "modbot/panel.py:335",
+      "buttons": [
+        {
+          "id": "panel.panel.340",
+          "label": "Скрытые чаты",
+          "action": "cp:list:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:340"
+        },
+        {
+          "id": "panel.panel.342",
+          "label": "{self.t(user_id, key)}",
+          "action": "{op}:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:342"
+        },
+        {
+          "id": "panel.panel.346",
+          "label": "Баннер группы",
+          "action": "bn:open:group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:346"
+        },
+        {
+          "id": "panel.panel.348",
+          "label": "Посёлок",
+          "action": "ec:village:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:348"
+        },
+        {
+          "id": "panel.panel.350",
+          "label": "Убрать чат из панели",
+          "action": "cp:ask:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:350"
+        },
+        {
+          "id": "panel.panel.351",
+          "label": "Управляющие",
+          "action": "managers:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:351"
+        },
+        {
+          "id": "panel.panel.353",
+          "label": "{Вкл/Выкл}",
+          "action": "toggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:353"
+        },
+        {
+          "id": "panel.panel.358",
+          "label": "Посмотреть тарифы",
+          "action": "ec:access:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:358"
+        },
+        {
+          "id": "panel.panel.359",
+          "label": "Для участников",
+          "action": "ec:overview:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:359"
+        },
+        {
+          "id": "panel.panel.360",
+          "label": "Экономика и магазин",
+          "action": "ec:group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:360"
+        }
+      ]
+    },
+    {
+      "id": "panel.access_panel",
+      "source": "modbot/panel.py:363",
+      "buttons": [
+        {
+          "id": "panel.access_panel.364",
+          "label": "Подключить / продлить чат",
+          "action": "ec:connect:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:364"
+        },
+        {
+          "id": "panel.access_panel.364",
+          "label": "Кошелёк",
+          "action": "ec:wallet:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:364"
+        },
+        {
+          "id": "panel.access_panel.367",
+          "label": "{group['title'][:40]}",
+          "action": "ec:access:{group['id']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:367"
+        },
+        {
+          "id": "panel.access_panel.369",
+          "label": "Подключить / продлить чат",
+          "action": "connect_paid",
+          "kind": "callback",
+          "source": "modbot/panel.py:369"
+        }
+      ]
+    },
+    {
+      "id": "panel.send_settings",
+      "source": "modbot/panel.py:374",
+      "buttons": [
+        {
+          "id": "panel.send_settings.379",
+          "label": "{Вкл/Выкл}",
+          "action": "sales_toggle",
+          "kind": "toggle",
+          "source": "modbot/panel.py:379"
+        },
+        {
+          "id": "panel.send_settings.380",
+          "label": "Рассылки",
+          "action": "bc:list",
+          "kind": "callback",
+          "source": "modbot/panel.py:380"
+        },
+        {
+          "id": "panel.send_settings.381",
+          "label": "Проверка выдачи Premium",
+          "action": "ec:premiumorders:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:381"
+        }
+      ]
+    },
+    {
+      "id": "panel.successful_payment",
+      "source": "modbot/panel.py:404",
+      "buttons": [
+        {
+          "id": "panel.successful_payment.433",
+          "label": "{self.t(message.from_user.id, invoice['plan'] + '_name')}",
+          "action": "{target}:{invoice['target_chat']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:433"
+        },
+        {
+          "id": "panel.successful_payment.438",
+          "label": "Подключить / продлить чат",
+          "action": "connect_paid",
+          "kind": "callback",
+          "source": "modbot/panel.py:438"
+        }
+      ]
+    },
+    {
+      "id": "panel.payment_support",
+      "source": "modbot/panel.py:500",
+      "buttons": [
+        {
+          "id": "panel.payment_support.504",
+          "label": "Выдан владельцем",
+          "action": "tg://user?id={OWNER_ID}",
+          "kind": "callback",
+          "source": "modbot/panel.py:504"
+        }
+      ]
+    },
+    {
+      "id": "panel.begin_input",
+      "source": "modbot/panel.py:507",
+      "buttons": [
+        {
+          "id": "panel.begin_input.511",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:511"
+        }
+      ]
+    },
+    {
+      "id": "panel.begin_connection_key",
+      "source": "modbot/panel.py:513",
+      "buttons": [
+        {
+          "id": "panel.begin_connection_key.518",
+          "label": "Назад / Главная",
+          "action": "aiconnections",
+          "kind": "callback",
+          "source": "modbot/panel.py:518"
+        }
+      ]
+    },
+    {
+      "id": "panel.choose_task_connection",
+      "source": "modbot/panel.py:520",
+      "buttons": [
+        {
+          "id": "panel.choose_task_connection.524",
+          "label": "{connection['name'][:28] + ' · ' + connection['model'][:25]}",
+          "action": "jobconnection:{chat_id}:{connection['id']}:{job_id or 0}",
+          "kind": "callback",
+          "source": "modbot/panel.py:524"
+        },
+        {
+          "id": "panel.choose_task_connection.530",
+          "label": "Подключения",
+          "action": "aiconnections:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:530"
+        },
+        {
+          "id": "panel.choose_task_connection.530",
+          "label": "Назад / Главная",
+          "action": "jobs",
+          "kind": "callback",
+          "source": "modbot/panel.py:530"
+        }
+      ]
+    },
+    {
+      "id": "panel.connection_models",
+      "source": "modbot/panel.py:532",
+      "buttons": [
+        {
+          "id": "panel.connection_models.540",
+          "label": "{model['name'][:55]}",
+          "action": "aimodel:{chat_id}:{connection_id}:{connection['version']}:{index}",
+          "kind": "callback",
+          "source": "modbot/panel.py:540"
+        },
+        {
+          "id": "panel.connection_models.544",
+          "label": "Предыдущая страница",
+          "action": "aimodels:{chat_id}:{connection_id}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/panel.py:544"
+        },
+        {
+          "id": "panel.connection_models.546",
+          "label": "Следующая страница",
+          "action": "aimodels:{chat_id}:{connection_id}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/panel.py:546"
+        },
+        {
+          "id": "panel.connection_models.549",
+          "label": "Назад / Главная",
+          "action": "aiconnections",
+          "kind": "callback",
+          "source": "modbot/panel.py:549"
+        }
+      ]
+    },
+    {
+      "id": "panel._callback",
+      "source": "modbot/panel.py:552",
+      "buttons": [
+        {
+          "id": "panel._callback.645",
+          "label": "{self.t(user_id, row['plan'] + '_name') + f\" #{row['id']}\"}",
+          "action": "credit:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:645"
+        },
+        {
+          "id": "panel._callback.666",
+          "label": "Назад",
+          "action": "about",
+          "kind": "callback",
+          "source": "modbot/panel.py:666"
+        }
+      ]
+    },
+    {
+      "id": "panel.perform_callback",
+      "source": "modbot/panel.py:678",
+      "buttons": [
+        {
+          "id": "panel.perform_callback.703",
+          "label": "{switch('automatic_moderation', group['moderation_enabled'])}",
+          "action": "moderationtoggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:703"
+        },
+        {
+          "id": "panel.perform_callback.704",
+          "label": "{switch('ai_moderation_switch', group['ai_moderation_enabled'])}",
+          "action": "aimoderationtoggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:704"
+        },
+        {
+          "id": "panel.perform_callback.705",
+          "label": "ИИ-модерация",
+          "action": "aimoderation:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:705"
+        },
+        {
+          "id": "panel.perform_callback.706",
+          "label": "Встроенная модерация",
+          "action": "builtin:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:706"
+        },
+        {
+          "id": "panel.perform_callback.707",
+          "label": "{self.t(user_id, 'media_policy_' + group['unscannable_media'])}",
+          "action": "mediapolicy:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:707"
+        },
+        {
+          "id": "panel.perform_callback.708",
+          "label": "{self.flag_text(user_id, 'notices', group['delete_notifications'])}",
+          "action": "notices:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:708"
+        },
+        {
+          "id": "panel.perform_callback.709",
+          "label": "Проверить пример",
+          "action": "sample:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:709"
+        },
+        {
+          "id": "panel.perform_callback.709",
+          "label": "Сброс предупреждений",
+          "action": "reset:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:709"
+        },
+        {
+          "id": "panel.perform_callback.710",
+          "label": "Журнал",
+          "action": "log:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:710"
+        },
+        {
+          "id": "panel.perform_callback.710",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:710"
+        },
+        {
+          "id": "panel.perform_callback.723",
+          "label": "Правила для участников",
+          "action": "memberrules:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:723"
+        },
+        {
+          "id": "panel.perform_callback.724",
+          "label": "Права команд модерации",
+          "action": "commandrights:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:724"
+        },
+        {
+          "id": "panel.perform_callback.724",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:724"
+        },
+        {
+          "id": "panel.perform_callback.729",
+          "label": "Посмотреть тарифы",
+          "action": "ec:access:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:729"
+        },
+        {
+          "id": "panel.perform_callback.729",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:729"
+        },
+        {
+          "id": "panel.perform_callback.732",
+          "label": "{name}",
+          "action": "glang:{chat_id}:{code}",
+          "kind": "callback",
+          "source": "modbot/panel.py:732"
+        },
+        {
+          "id": "panel.perform_callback.732",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:732"
+        },
+        {
+          "id": "panel.perform_callback.738",
+          "label": "{row['name']} · {row['ttl']}s",
+          "action": "botset:{chat_id}:{row['id']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:738"
+        },
+        {
+          "id": "panel.perform_callback.741",
+          "label": "Добавить",
+          "action": "botadd:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:741"
+        },
+        {
+          "id": "panel.perform_callback.741",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:741"
+        },
+        {
+          "id": "panel.perform_callback.763",
+          "label": "Изменить",
+          "action": "botedit:{chat_id}:{set_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:763"
+        },
+        {
+          "id": "panel.perform_callback.764",
+          "label": "{Вкл/Выкл}",
+          "action": "bottoggle:{chat_id}:{set_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:764"
+        },
+        {
+          "id": "panel.perform_callback.765",
+          "label": "Удаление команд: вкл / выкл",
+          "action": "botcommands:{chat_id}:{set_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:765"
+        },
+        {
+          "id": "panel.perform_callback.766",
+          "label": "Удалить",
+          "action": "botdelete:{chat_id}:{set_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:766"
+        },
+        {
+          "id": "panel.perform_callback.766",
+          "label": "Назад / Главная",
+          "action": "bots",
+          "kind": "callback",
+          "source": "modbot/panel.py:766"
+        },
+        {
+          "id": "panel.perform_callback.772",
+          "label": "Посмотреть",
+          "action": "rulespreview:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:772"
+        },
+        {
+          "id": "panel.perform_callback.772",
+          "label": "Изменить",
+          "action": "memberedit:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:772"
+        },
+        {
+          "id": "panel.perform_callback.773",
+          "label": "Кнопки",
+          "action": "rulesbuttons:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:773"
+        },
+        {
+          "id": "panel.perform_callback.774",
+          "label": "{self.t(user_id, 'caption_position_above' if group['rules_caption_above'] else 'caption_position_below')}",
+          "action": "captionposition:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:774"
+        },
+        {
+          "id": "panel.perform_callback.775",
+          "label": "Настройки правил под постами",
+          "action": "channel:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:775"
+        },
+        {
+          "id": "panel.perform_callback.776",
+          "label": "{self.flag_text(user_id, 'auto_rules', group['rules_auto'])}",
+          "action": "rulesauto:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:776"
+        },
+        {
+          "id": "panel.perform_callback.776",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:776"
+        },
+        {
+          "id": "panel.perform_callback.785",
+          "label": "Изменить",
+          "action": "rulesbuttonsedit:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:785"
+        },
+        {
+          "id": "panel.perform_callback.786",
+          "label": "Удалить",
+          "action": "rulesbuttonsclear:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:786"
+        },
+        {
+          "id": "panel.perform_callback.787",
+          "label": "Назад / Главная",
+          "action": "memberrules",
+          "kind": "callback",
+          "source": "modbot/panel.py:787"
+        },
+        {
+          "id": "panel.perform_callback.805",
+          "label": "{job['name']}",
+          "action": "job:{chat_id}:{job['id']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:805"
+        },
+        {
+          "id": "panel.perform_callback.807",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:807"
+        },
+        {
+          "id": "panel.perform_callback.810",
+          "label": "{c['name'][:42]}",
+          "action": "aiconnection:{chat_id}:{c['id']}",
+          "kind": "callback",
+          "source": "modbot/panel.py:810"
+        },
+        {
+          "id": "panel.perform_callback.813",
+          "label": "Добавить",
+          "action": "aiproviders:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:813"
+        },
+        {
+          "id": "panel.perform_callback.813",
+          "label": "Назад / Главная",
+          "action": "jobs",
+          "kind": "callback",
+          "source": "modbot/panel.py:813"
+        },
+        {
+          "id": "panel.perform_callback.815",
+          "label": "{p['name']}",
+          "action": "aiprovider:{chat_id}:{code}",
+          "kind": "callback",
+          "source": "modbot/panel.py:815"
+        },
+        {
+          "id": "panel.perform_callback.816",
+          "label": "Назад / Главная",
+          "action": "aiconnections",
+          "kind": "callback",
+          "source": "modbot/panel.py:816"
+        },
+        {
+          "id": "panel.perform_callback.833",
+          "label": "Модель",
+          "action": "aimodels:{chat_id}:{connection_id}:0",
+          "kind": "callback",
+          "source": "modbot/panel.py:833"
+        },
+        {
+          "id": "panel.perform_callback.834",
+          "label": "Обновить список моделей",
+          "action": "airefresh:{chat_id}:{connection_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:834"
+        },
+        {
+          "id": "panel.perform_callback.835",
+          "label": "Заменить API-ключ",
+          "action": "aikey:{chat_id}:{connection_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:835"
+        },
+        {
+          "id": "panel.perform_callback.836",
+          "label": "Переименовать",
+          "action": "airename:{chat_id}:{connection_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:836"
+        },
+        {
+          "id": "panel.perform_callback.837",
+          "label": "{Вкл/Выкл}",
+          "action": "aitoggle:{chat_id}:{connection_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:837"
+        },
+        {
+          "id": "panel.perform_callback.838",
+          "label": "Удалить",
+          "action": "aidelete:{chat_id}:{connection_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:838"
+        },
+        {
+          "id": "panel.perform_callback.838",
+          "label": "Назад / Главная",
+          "action": "aiconnections",
+          "kind": "callback",
+          "source": "modbot/panel.py:838"
+        },
+        {
+          "id": "panel.perform_callback.896",
+          "label": "Изменить",
+          "action": "jobedit:{chat_id}:{job_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:896"
+        },
+        {
+          "id": "panel.perform_callback.897",
+          "label": "{Вкл/Выкл}",
+          "action": "jobtoggle:{chat_id}:{job_id}",
+          "kind": "toggle",
+          "source": "modbot/panel.py:897"
+        },
+        {
+          "id": "panel.perform_callback.898",
+          "label": "Запустить сейчас",
+          "action": "jobrun:{chat_id}:{job_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:898"
+        },
+        {
+          "id": "panel.perform_callback.899",
+          "label": "Удалить",
+          "action": "jobdelete:{chat_id}:{job_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:899"
+        },
+        {
+          "id": "panel.perform_callback.899",
+          "label": "Назад / Главная",
+          "action": "jobs",
+          "kind": "callback",
+          "source": "modbot/panel.py:899"
+        },
+        {
+          "id": "panel.perform_callback.902",
+          "label": "Изменить",
+          "action": "edit:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:902"
+        },
+        {
+          "id": "panel.perform_callback.902",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/panel.py:902"
+        },
+        {
+          "id": "panel.perform_callback.914",
+          "label": "{self.t(user_id, key)}",
+          "action": "mode:{chat_id}:{code}",
+          "kind": "callback",
+          "source": "modbot/panel.py:914"
+        },
+        {
+          "id": "panel.perform_callback.915",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/panel.py:915"
+        },
+        {
+          "id": "panel.perform_callback.942",
+          "label": "Отозвать доступ у {user}",
+          "action": "revoke:{chat_id}:{uid}",
+          "kind": "callback",
+          "source": "modbot/panel.py:942"
+        },
+        {
+          "id": "panel.perform_callback.943",
+          "label": "Добавить управляющего",
+          "action": "grant:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:943"
+        },
+        {
+          "id": "panel.perform_callback.943",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:943"
+        },
+        {
+          "id": "panel.perform_callback.952",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/panel.py:952"
+        }
+      ]
+    },
+    {
+      "id": "panel.private_input",
+      "source": "modbot/panel.py:956",
+      "buttons": [
+        {
+          "id": "panel.private_input.1065",
+          "label": "Применить",
+          "action": "apply:{chat_id}:{nonce}",
+          "kind": "callback",
+          "source": "modbot/panel.py:1065"
+        },
+        {
+          "id": "panel.private_input.1065",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/panel.py:1065"
+        },
+        {
+          "id": "panel.private_input.1092",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/panel.py:1092"
+        },
+        {
+          "id": "panel.private_input.1101",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:1101"
+        },
+        {
+          "id": "panel.private_input.1103",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:1103"
+        },
+        {
+          "id": "panel.private_input.1105",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/panel.py:1105"
+        }
+      ]
+    },
+    {
+      "id": "purchase_panel.purchase_contact",
+      "source": "modbot/purchase_panel.py:16",
+      "buttons": [
+        {
+          "id": "purchase_panel.purchase_contact.17",
+          "label": "Написать владельцу",
+          "action": "tg://user?id={OWNER_ID}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:17"
+        }
+      ]
+    },
+    {
+      "id": "purchase_panel.purchase_list",
+      "source": "modbot/purchase_panel.py:51",
+      "buttons": [
+        {
+          "id": "purchase_panel.purchase_list.61",
+          "label": "{title}",
+          "action": "pc:view:{row['id']}:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:61"
+        },
+        {
+          "id": "purchase_panel.purchase_list.63",
+          "label": "←",
+          "action": "pc:list:{page - 1}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:63"
+        },
+        {
+          "id": "purchase_panel.purchase_list.64",
+          "label": "→",
+          "action": "pc:list:{page + 1}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:64"
+        },
+        {
+          "id": "purchase_panel.purchase_list.67",
+          "label": "{self.e(user, 'cancel_mine' if all_users else 'cancel_all')}",
+          "action": "pc:list:0:{0 if all_users else 1}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:67"
+        }
+      ]
+    },
+    {
+      "id": "purchase_panel.purchase_view",
+      "source": "modbot/purchase_panel.py:74",
+      "buttons": [
+        {
+          "id": "purchase_panel.purchase_view.87",
+          "label": "Проверить возврат",
+          "action": "pc:go:{identifier}:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:87"
+        },
+        {
+          "id": "purchase_panel.purchase_view.93",
+          "label": "Отменить покупку",
+          "action": "pc:confirm:{identifier}:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:93"
+        },
+        {
+          "id": "purchase_panel.purchase_view.96",
+          "label": "Назад",
+          "action": "pc:list:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:96"
+        },
+        {
+          "id": "purchase_panel.purchase_view.96",
+          "label": "Главная",
+          "action": "home",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:96"
+        }
+      ]
+    },
+    {
+      "id": "purchase_panel.purchase_callback",
+      "source": "modbot/purchase_panel.py:99",
+      "buttons": [
+        {
+          "id": "purchase_panel.purchase_callback.121",
+          "label": "Подтвердить",
+          "action": "pc:go:{identifier}:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:121"
+        },
+        {
+          "id": "purchase_panel.purchase_callback.122",
+          "label": "Назад",
+          "action": "pc:view:{identifier}:{page}:{scope}",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:122"
+        },
+        {
+          "id": "purchase_panel.purchase_callback.134",
+          "label": "Назад",
+          "action": "pc:list:0:0",
+          "kind": "callback",
+          "source": "modbot/purchase_panel.py:134"
+        }
+      ]
+    },
+    {
+      "id": "release_panel.show_history",
+      "source": "modbot/release_panel.py:28",
+      "buttons": [
+        {
+          "id": "release_panel.show_history.38",
+          "label": "{key}",
+          "action": "cl:{chat}:{key}:0",
+          "kind": "callback",
+          "source": "modbot/release_panel.py:38"
+        },
+        {
+          "id": "release_panel.show_history.39",
+          "label": "{all_changes}",
+          "action": "cl:{chat}:all:0",
+          "kind": "callback",
+          "source": "modbot/release_panel.py:39"
+        },
+        {
+          "id": "release_panel.show_history.46",
+          "label": "←",
+          "action": "cl:{chat}:{version}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/release_panel.py:46"
+        },
+        {
+          "id": "release_panel.show_history.47",
+          "label": "→",
+          "action": "cl:{chat}:{version}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/release_panel.py:47"
+        },
+        {
+          "id": "release_panel.show_history.49",
+          "label": "{all_versions}",
+          "action": "cl:{chat}:index:0",
+          "kind": "callback",
+          "source": "modbot/release_panel.py:49"
+        }
+      ]
+    },
+    {
+      "id": "service_panel.service_callback",
+      "source": "modbot/service_panel.py:37",
+      "buttons": [
+        {
+          "id": "service_panel.service_callback.45",
+          "label": "Чат и модели",
+          "action": "aichat:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:45"
+        },
+        {
+          "id": "service_panel.service_callback.45",
+          "label": "Задачи",
+          "action": "jobs:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:45"
+        },
+        {
+          "id": "service_panel.service_callback.45",
+          "label": "AIChating+",
+          "action": "ec:aisub:{chat_id}:ai_month",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:45"
+        },
+        {
+          "id": "service_panel.service_callback.45",
+          "label": "AIChating Pro",
+          "action": "ec:aisub:{chat_id}:ai_pro_month",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:45"
+        },
+        {
+          "id": "service_panel.service_callback.45",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:45"
+        },
+        {
+          "id": "service_panel.service_callback.51",
+          "label": "Назад / Главная",
+          "action": "{'jobs' if mode == 'task' else 'chatsources'}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:51"
+        },
+        {
+          "id": "service_panel.service_callback.52",
+          "label": "{m['name'] + (' · NEW' if m['new'] else '')}",
+          "action": "{'aitasknew' if mode == 'task' else 'imagesource' if mode == 'image' else 'chatsource'}:{chat_id}:{m['source']}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:52"
+        },
+        {
+          "id": "service_panel.service_callback.53",
+          "label": "Назад / Главная",
+          "action": "{'jobs' if mode == 'task' else 'chatsources'}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:53"
+        },
+        {
+          "id": "service_panel.service_callback.56",
+          "label": "DeepSeek Flash",
+          "action": "aitasknew:{chat_id}:flash",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:56"
+        },
+        {
+          "id": "service_panel.service_callback.56",
+          "label": "DeepSeek Pro",
+          "action": "aitasknew:{chat_id}:pro",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:56"
+        },
+        {
+          "id": "service_panel.service_callback.56",
+          "label": "Каталог",
+          "action": "modelcatalog:{chat_id}:task",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:56"
+        },
+        {
+          "id": "service_panel.service_callback.56",
+          "label": "Назад / Главная",
+          "action": "jobs",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:56"
+        },
+        {
+          "id": "service_panel.service_callback.69",
+          "label": "Выбрать ИИ",
+          "action": "chatsources:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:69"
+        },
+        {
+          "id": "service_panel.service_callback.70",
+          "label": "Промпт ИИ",
+          "action": "chatprompt:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:70"
+        },
+        {
+          "id": "service_panel.service_callback.71",
+          "label": "Настройки поведения ИИ",
+          "action": "aiprefs:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:71"
+        },
+        {
+          "id": "service_panel.service_callback.72",
+          "label": "{self.flag_text(user_id, 'web_search', group['ai_chat_search'])}",
+          "action": "chatsearch:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:72"
+        },
+        {
+          "id": "service_panel.service_callback.73",
+          "label": "{'Генерация изображений: ' + ('✅' if group['ai_images_enabled'] else '❌')}",
+          "action": "chatimages:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:73"
+        },
+        {
+          "id": "service_panel.service_callback.73",
+          "label": "Модель для изображений",
+          "action": "modelcatalog:{chat_id}:image",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:73"
+        },
+        {
+          "id": "service_panel.service_callback.74",
+          "label": "Очистить контекст группы",
+          "action": "chathistory:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:74"
+        },
+        {
+          "id": "service_panel.service_callback.76",
+          "label": "AIChating Pro",
+          "action": "ec:aisub:{chat_id}:ai_pro_month",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:76"
+        },
+        {
+          "id": "service_panel.service_callback.77",
+          "label": "{'AIChating+ • ' + self.e(user_id, 'shop')}",
+          "action": "ec:aisub:{chat_id}:ai_month",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:77"
+        },
+        {
+          "id": "service_panel.service_callback.81",
+          "label": "Доп. Лимиты за актив",
+          "action": "freeboost:{chat_id}:{benefit['boosts']}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:81"
+        },
+        {
+          "id": "service_panel.service_callback.88",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:88"
+        },
+        {
+          "id": "service_panel.service_callback.91",
+          "label": "{field[1] + ': ' + style_label(key, prefs[key])[:50]}",
+          "action": "aipref:{chat_id}:{key}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:91"
+        },
+        {
+          "id": "service_panel.service_callback.92",
+          "label": "Назад / Главная",
+          "action": "aichat",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:92"
+        },
+        {
+          "id": "service_panel.service_callback.98",
+          "label": "Подтверждаю включение РП 18+",
+          "action": "aipapprove:{chat_id}:roleplay:adult",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:98"
+        },
+        {
+          "id": "service_panel.service_callback.98",
+          "label": "Назад / Главная",
+          "action": "aiprefs",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:98"
+        },
+        {
+          "id": "service_panel.service_callback.113",
+          "label": "Назад / Главная",
+          "action": "aiprefs",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:113"
+        },
+        {
+          "id": "service_panel.service_callback.115",
+          "label": "{('✓ ' if v == value else '') + text}",
+          "action": "aipset:{chat_id}:{key}:{v}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:115"
+        },
+        {
+          "id": "service_panel.service_callback.115",
+          "label": "Изменить список",
+          "action": "aiplist:{chat_id}:{key}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:115"
+        },
+        {
+          "id": "service_panel.service_callback.115",
+          "label": "Очистить список",
+          "action": "aipclear:{chat_id}:{key}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:115"
+        },
+        {
+          "id": "service_panel.service_callback.116",
+          "label": "Назад / Главная",
+          "action": "aiprefs",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:116"
+        },
+        {
+          "id": "service_panel.service_callback.118",
+          "label": "DeepSeek Flash",
+          "action": "chatsource:{chat_id}:flash",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:118"
+        },
+        {
+          "id": "service_panel.service_callback.118",
+          "label": "DeepSeek Pro",
+          "action": "chatsource:{chat_id}:pro",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:118"
+        },
+        {
+          "id": "service_panel.service_callback.118",
+          "label": "Каталог",
+          "action": "modelcatalog:{chat_id}:chat",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:118"
+        },
+        {
+          "id": "service_panel.service_callback.118",
+          "label": "Выключен",
+          "action": "chatsource:{chat_id}:off",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:118"
+        },
+        {
+          "id": "service_panel.service_callback.119",
+          "label": "Назад / Главная",
+          "action": "aichat",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:119"
+        },
+        {
+          "id": "service_panel.service_callback.159",
+          "label": "{display_money(amount) + ' ⚡'}",
+          "action": "ec:aisub:{chat_id}:ds_pack",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:159"
+        },
+        {
+          "id": "service_panel.service_callback.162",
+          "label": "Назад / Главная",
+          "action": "aimoderation",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:162"
+        },
+        {
+          "id": "service_panel.service_callback.169",
+          "label": "{self.e(user_id, 'ai_moderation_switch') + ': ' + self.e(user_id, 'enabled' if group['ai_moderation_enabled'] else 'off')}",
+          "action": "aimoderationtoggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:169"
+        },
+        {
+          "id": "service_panel.service_callback.171",
+          "label": "Инструкции для модерации",
+          "action": "rules:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:171"
+        },
+        {
+          "id": "service_panel.service_callback.171",
+          "label": "Изменить",
+          "action": "edit:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:171"
+        },
+        {
+          "id": "service_panel.service_callback.172",
+          "label": "Режим ИИ Модерации",
+          "action": "modes:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:172"
+        },
+        {
+          "id": "service_panel.service_callback.173",
+          "label": "NVIDIA NIM",
+          "action": "modprovider:{chat_id}:nim",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:173"
+        },
+        {
+          "id": "service_panel.service_callback.173",
+          "label": "DeepSeek",
+          "action": "modprovider:{chat_id}:ds",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:173"
+        },
+        {
+          "id": "service_panel.service_callback.174",
+          "label": "Действия по причинам",
+          "action": "reasonlist:{chat_id}:ai",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:174"
+        },
+        {
+          "id": "service_panel.service_callback.175",
+          "label": "Пакет DS-модерации",
+          "action": "dsshop:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:175"
+        },
+        {
+          "id": "service_panel.service_callback.175",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:175"
+        },
+        {
+          "id": "service_panel.service_callback.184",
+          "label": "Режим ИИ Модерации",
+          "action": "modes:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:184"
+        },
+        {
+          "id": "service_panel.service_callback.185",
+          "label": "{self.flag_text(user_id, 'spam', group['spam_enabled'])}",
+          "action": "spam:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:185"
+        },
+        {
+          "id": "service_panel.service_callback.186",
+          "label": "{self.flag_text(user_id, 'flood', group['flood_enabled'])}",
+          "action": "flood:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:186"
+        },
+        {
+          "id": "service_panel.service_callback.187",
+          "label": "{self.flag_text(user_id, 'delete_links', group['delete_links'])}",
+          "action": "linkfilter:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:187"
+        },
+        {
+          "id": "service_panel.service_callback.188",
+          "label": "{self.flag_text(user_id, 'antimat', group['antimat'])}",
+          "action": "antimat:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:188"
+        },
+        {
+          "id": "service_panel.service_callback.189",
+          "label": "Банворды",
+          "action": "banwords:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:189"
+        },
+        {
+          "id": "service_panel.service_callback.190",
+          "label": "Действия по причинам",
+          "action": "reasonlist:{chat_id}:builtin",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:190"
+        },
+        {
+          "id": "service_panel.service_callback.191",
+          "label": "Назад / Главная",
+          "action": "moderation",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:191"
+        },
+        {
+          "id": "service_panel.service_callback.197",
+          "label": "{self.flag_text(user_id, 'receive_broadcasts', group['receive_broadcasts'])}",
+          "action": "mailingstoggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:197"
+        },
+        {
+          "id": "service_panel.service_callback.198",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:198"
+        },
+        {
+          "id": "service_panel.service_callback.205",
+          "label": "{self.flag_text(user_id, key, group[key])}",
+          "action": "rptoggle:{chat_id}:{key}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:205"
+        },
+        {
+          "id": "service_panel.service_callback.206",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:206"
+        },
+        {
+          "id": "service_panel.service_callback.216",
+          "label": "{self.flag_text(user_id, 'restore_admins', group['restore_admins'])}",
+          "action": "adminrestoretoggle:{chat_id}",
+          "kind": "toggle",
+          "source": "modbot/service_panel.py:216"
+        },
+        {
+          "id": "service_panel.service_callback.217",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:217"
+        },
+        {
+          "id": "service_panel.service_callback.228",
+          "label": "Изменить",
+          "action": "banwordsedit:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:228"
+        },
+        {
+          "id": "service_panel.service_callback.229",
+          "label": "Действия по причинам",
+          "action": "reasonview:{chat_id}:builtin:banword",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:229"
+        },
+        {
+          "id": "service_panel.service_callback.230",
+          "label": "Назад / Главная",
+          "action": "builtin",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:230"
+        },
+        {
+          "id": "service_panel.service_callback.236",
+          "label": "{self.flag_text(user_id, 'all_chat_admins', group['commands_admins'])}",
+          "action": "commandadmins:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:236"
+        },
+        {
+          "id": "service_panel.service_callback.237",
+          "label": "Модераторы вручную",
+          "action": "commandusers:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:237"
+        },
+        {
+          "id": "service_panel.service_callback.237",
+          "label": "Назад / Главная",
+          "action": "tools",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:237"
+        },
+        {
+          "id": "service_panel.service_callback.251",
+          "label": "{self.t(user_id, reason) + ' → ' + self.t(user_id, 'act_' + setting['action'])}",
+          "action": "reasonview:{chat_id}:builtin:{reason}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:251"
+        },
+        {
+          "id": "service_panel.service_callback.255",
+          "label": "{(row['label'] or row['reason'])[:45] + ' → ' + self.t(user_id, 'act_' + row['action'])}",
+          "action": "reasonview:{chat_id}:ai:{row['rowid']}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:255"
+        },
+        {
+          "id": "service_panel.service_callback.257",
+          "label": "Добавить",
+          "action": "reasonadd:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:257"
+        },
+        {
+          "id": "service_panel.service_callback.258",
+          "label": "Назад / Главная",
+          "action": "{'aimoderation' if source == 'ai' else 'builtin'}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:258"
+        },
+        {
+          "id": "service_panel.service_callback.263",
+          "label": "{category_name(choices[i], self.store.language(user_id))}",
+          "action": "reasonpick:{chat_id}:{i}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:263"
+        },
+        {
+          "id": "service_panel.service_callback.265",
+          "label": "←",
+          "action": "reasonadd:{chat_id}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:265"
+        },
+        {
+          "id": "service_panel.service_callback.266",
+          "label": "→",
+          "action": "reasonadd:{chat_id}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:266"
+        },
+        {
+          "id": "service_panel.service_callback.268",
+          "label": "Другая причина / остальные причины (*)",
+          "action": "reasoncustom:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:268"
+        },
+        {
+          "id": "service_panel.service_callback.268",
+          "label": "Назад / Главная",
+          "action": "group:{chat_id}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:268"
+        },
+        {
+          "id": "service_panel.service_callback.306",
+          "label": "{self.t(user_id, 'act_' + action)}",
+          "action": "reasonset:{chat_id}:{source}:{identifier}:{action}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:306"
+        },
+        {
+          "id": "service_panel.service_callback.308",
+          "label": "Длительность наказания",
+          "action": "reasonseconds:{chat_id}:{source}:{identifier}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:308"
+        },
+        {
+          "id": "service_panel.service_callback.309",
+          "label": "Сбросить действие",
+          "action": "reasondelete:{chat_id}:{source}:{identifier}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:309"
+        },
+        {
+          "id": "service_panel.service_callback.310",
+          "label": "Назад",
+          "action": "reasonlist:{chat_id}:{source}",
+          "kind": "callback",
+          "source": "modbot/service_panel.py:310"
+        }
+      ]
+    },
+    {
+      "id": "shop.show_shop",
+      "source": "modbot/shop.py:16",
+      "buttons": [
+        {
+          "id": "shop.show_shop.20",
+          "label": "{self.e(user, 'shop_currency_' + asset)}",
+          "action": "ec:shopcurrency:{chat}:{asset}",
+          "kind": "callback",
+          "source": "modbot/shop.py:20"
+        }
+      ]
+    },
+    {
+      "id": "shop.show_shop_currency",
+      "source": "modbot/shop.py:28",
+      "buttons": [
+        {
+          "id": "shop.show_shop_currency.36",
+          "label": "Купить ⚡",
+          "action": "https://t.me/{self.bot_username}?start=topup_{chat}",
+          "kind": "link",
+          "source": "modbot/shop.py:36"
+        },
+        {
+          "id": "shop.show_shop_currency.38",
+          "label": "Купить ⚡",
+          "action": "ec:topup:0",
+          "kind": "callback",
+          "source": "modbot/shop.py:38"
+        },
+        {
+          "id": "shop.show_shop_currency.39",
+          "label": "Поддержать проект",
+          "action": "https://t.me/{self.bot_username}?start=donate_{chat}",
+          "kind": "link",
+          "source": "modbot/shop.py:39"
+        },
+        {
+          "id": "shop.show_shop_currency.40",
+          "label": "Поддержать проект",
+          "action": "ec:donate:0",
+          "kind": "callback",
+          "source": "modbot/shop.py:40"
+        },
+        {
+          "id": "shop.show_shop_currency.43",
+          "label": "Доступ к боту",
+          "action": "ec:shopgroups:0:energy",
+          "kind": "callback",
+          "source": "modbot/shop.py:43"
+        },
+        {
+          "id": "shop.show_shop_currency.45",
+          "label": "Доступ к боту",
+          "action": "ec:access:{chat}",
+          "kind": "callback",
+          "source": "modbot/shop.py:45"
+        },
+        {
+          "id": "shop.show_shop_currency.47",
+          "label": "Telegram Premium · 3 месяца",
+          "action": "ec:premium:{chat}:energy",
+          "kind": "callback",
+          "source": "modbot/shop.py:47"
+        },
+        {
+          "id": "shop.show_shop_currency.49",
+          "label": "Автофермы",
+          "action": "ec:shopfarms:{chat}:energy:0",
+          "kind": "callback",
+          "source": "modbot/shop.py:49"
+        },
+        {
+          "id": "shop.show_shop_currency.51",
+          "label": "DeepSeek",
+          "action": "ec:aisub:{chat}:ai_month",
+          "kind": "callback",
+          "source": "modbot/shop.py:51"
+        },
+        {
+          "id": "shop.show_shop_currency.53",
+          "label": "GPT Luna",
+          "action": "ec:aisub:{chat}:gpt_month",
+          "kind": "callback",
+          "source": "modbot/shop.py:53"
+        },
+        {
+          "id": "shop.show_shop_currency.54",
+          "label": "DeepSeek · 1000 проверок модерации",
+          "action": "ec:aisub:{chat}:ds_pack",
+          "kind": "callback",
+          "source": "modbot/shop.py:54"
+        },
+        {
+          "id": "shop.show_shop_currency.63",
+          "label": "Telegram Premium · 3 месяца",
+          "action": "ec:premium:{chat}:coins",
+          "kind": "callback",
+          "source": "modbot/shop.py:63"
+        },
+        {
+          "id": "shop.show_shop_currency.68",
+          "label": "{group['title']}",
+          "action": "ec:shopcurrency:{group['id']}:coins",
+          "kind": "callback",
+          "source": "modbot/shop.py:68"
+        }
+      ]
+    },
+    {
+      "id": "shop.show_access_tiers",
+      "source": "modbot/shop.py:77",
+      "buttons": [
+        {
+          "id": "shop.show_access_tiers.78",
+          "label": "{self.e(user, 'tier_' + tier)}",
+          "action": "ec:accessmode:{chat}:{tier}",
+          "kind": "callback",
+          "source": "modbot/shop.py:78"
+        },
+        {
+          "id": "shop.show_access_tiers.81",
+          "label": "Выдать доступ бесплатно",
+          "action": "og:tier:{chat}",
+          "kind": "callback",
+          "source": "modbot/shop.py:81"
+        }
+      ]
+    },
+    {
+      "id": "shop.show_access_plans",
+      "source": "modbot/shop.py:86",
+      "buttons": [
+        {
+          "id": "shop.show_access_plans.98",
+          "label": "{label + ' · ' + display_money(price) + ' ⚡'}",
+          "action": "ec:checkout:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/shop.py:98"
+        }
+      ]
+    },
+    {
+      "id": "shop.show_premium_checkout",
+      "source": "modbot/shop.py:102",
+      "buttons": [
+        {
+          "id": "shop.show_premium_checkout.108",
+          "label": "Подтвердить",
+          "action": "ec:premiumpay:{chat}:{token}",
+          "kind": "callback",
+          "source": "modbot/shop.py:108"
+        }
+      ]
+    },
+    {
+      "id": "shop.commerce_callback",
+      "source": "modbot/shop.py:136",
+      "buttons": [
+        {
+          "id": "shop.commerce_callback.150",
+          "label": "{group['title']}",
+          "action": "ec:shopcurrency:{group['id']}:energy",
+          "kind": "callback",
+          "source": "modbot/shop.py:150"
+        },
+        {
+          "id": "shop.commerce_callback.167",
+          "label": "Начать сразу",
+          "action": "ec:accessplans:{chat}:{tier}:now",
+          "kind": "callback",
+          "source": "modbot/shop.py:167"
+        },
+        {
+          "id": "shop.commerce_callback.170",
+          "label": "После текущего доступа",
+          "action": "ec:accessplans:{chat}:{tier}:after",
+          "kind": "callback",
+          "source": "modbot/shop.py:170"
+        },
+        {
+          "id": "shop.commerce_callback.185",
+          "label": "{'#' + row['token'][:8] + ' · ' + str(row['user_id'])}",
+          "action": "ec:premiumresolve:0:{row['token']}",
+          "kind": "callback",
+          "source": "modbot/shop.py:185"
+        },
+        {
+          "id": "shop.commerce_callback.193",
+          "label": "Подтвердить: подарок выдан",
+          "action": "ec:premiumresolved:0:{token}:completed",
+          "kind": "callback",
+          "source": "modbot/shop.py:193"
+        },
+        {
+          "id": "shop.commerce_callback.194",
+          "label": "Подтвердить: не выдан, вернуть резерв",
+          "action": "ec:premiumresolved:0:{token}:failed",
+          "kind": "callback",
+          "source": "modbot/shop.py:194"
+        }
+      ]
+    },
+    {
+      "id": "social._social_command",
+      "source": "modbot/social.py:52",
+      "buttons": [
+        {
+          "id": "social._social_command.151",
+          "label": "{et(language, 'accept')}",
+          "action": "duel:accept:{identifier}",
+          "kind": "callback",
+          "source": "modbot/social.py:151"
+        },
+        {
+          "id": "social._social_command.152",
+          "label": "{et(language, 'decline')}",
+          "action": "duel:decline:{identifier}",
+          "kind": "callback",
+          "source": "modbot/social.py:152"
+        },
+        {
+          "id": "social._social_command.153",
+          "label": "{et(language, 'cancel_invite')}",
+          "action": "duel:cancel:{identifier}",
+          "kind": "callback",
+          "source": "modbot/social.py:153"
+        }
+      ]
+    },
+    {
+      "id": "ux_wizard.wizard_show",
+      "source": "modbot/ux_wizard.py:26",
+      "buttons": [
+        {
+          "id": "ux_wizard.wizard_show.31",
+          "label": "{choice_label(self.store.language(user), label, code)}",
+          "action": "wf:{payload['choice_token']}:{i}",
+          "kind": "callback",
+          "source": "modbot/ux_wizard.py:31"
+        }
+      ]
+    },
+    {
+      "id": "villages.show_village",
+      "source": "modbot/villages.py:38",
+      "buttons": [
+        {
+          "id": "villages.show_village.45",
+          "label": "Создать посёлок",
+          "action": "ec:vcreate:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:45"
+        },
+        {
+          "id": "villages.show_village.50",
+          "label": "Карта посёлка",
+          "action": "ec:vmap:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:50"
+        },
+        {
+          "id": "villages.show_village.51",
+          "label": "Перегенерировать карту",
+          "action": "ec:vregen:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:51"
+        },
+        {
+          "id": "villages.show_village.52",
+          "label": "Построить / улучшить",
+          "action": "ec:vbuild:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:52"
+        },
+        {
+          "id": "villages.show_village.54",
+          "label": "Создать посёлок",
+          "action": "ec:vcreate:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:54"
+        },
+        {
+          "id": "villages.show_village.55",
+          "label": "Кто может строить",
+          "action": "ec:vrights:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:55"
+        },
+        {
+          "id": "villages.show_village.57",
+          "label": "Постройки",
+          "action": "ec:vbuildings:{chat}:0",
+          "kind": "callback",
+          "source": "modbot/villages.py:57"
+        },
+        {
+          "id": "villages.show_village.64",
+          "label": "Подтвердить строительство",
+          "action": "ec:vapprove:{chat}:{job['id']}",
+          "kind": "callback",
+          "source": "modbot/villages.py:64"
+        },
+        {
+          "id": "villages.show_village.64",
+          "label": "Отменить строительство",
+          "action": "ec:vdecline:{chat}:{job['id']}",
+          "kind": "callback",
+          "source": "modbot/villages.py:64"
+        },
+        {
+          "id": "villages.show_village.72",
+          "label": "Восстановить задание deAPI",
+          "action": "ec:vrecover:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:72"
+        },
+        {
+          "id": "villages.show_village.74",
+          "label": "{self.e(user, 'village_bonuses').split(':', 1)[0]}",
+          "action": "ec:vbonuses:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:74"
+        },
+        {
+          "id": "villages.show_village.75",
+          "label": "↻",
+          "action": "ec:village:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:75"
+        }
+      ]
+    },
+    {
+      "id": "villages.village_callback",
+      "source": "modbot/villages.py:94",
+      "buttons": [
+        {
+          "id": "villages.village_callback.114",
+          "label": "Перегенерировать карту",
+          "action": "ec:vregengo:{chat}:{v['revision']}:{nonce}",
+          "kind": "callback",
+          "source": "modbot/villages.py:114"
+        },
+        {
+          "id": "villages.village_callback.114",
+          "label": "Изменить описание",
+          "action": "ec:vregendesc:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:114"
+        },
+        {
+          "id": "villages.village_callback.122",
+          "label": "Посёлок",
+          "action": "ec:village:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:122"
+        },
+        {
+          "id": "villages.village_callback.128",
+          "label": "←",
+          "action": "ec:vbuildings:{chat}:{page - 1}",
+          "kind": "callback",
+          "source": "modbot/villages.py:128"
+        },
+        {
+          "id": "villages.village_callback.129",
+          "label": "→",
+          "action": "ec:vbuildings:{chat}:{page + 1}",
+          "kind": "callback",
+          "source": "modbot/villages.py:129"
+        },
+        {
+          "id": "villages.village_callback.145",
+          "label": "{self.e(user, 'village_' + mode)}",
+          "action": "ec:vpolicy:{chat}:{mode}",
+          "kind": "callback",
+          "source": "modbot/villages.py:145"
+        }
+      ]
+    },
+    {
+      "id": "villages.village_input",
+      "source": "modbot/villages.py:163",
+      "buttons": [
+        {
+          "id": "villages.village_input.173",
+          "label": "Посёлок",
+          "action": "ec:village:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:173"
+        },
+        {
+          "id": "villages.village_input.199",
+          "label": "Посёлок",
+          "action": "ec:village:{chat}",
+          "kind": "callback",
+          "source": "modbot/villages.py:199"
+        }
+      ]
+    }
+  ]
+}
