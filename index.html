@@ -91,7 +91,7 @@ body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(120px 
 </style>
 <link rel="stylesheet" href="beta.css?v=050sc2">
 <link rel="stylesheet" href="banners.css?v=050bn5">
-<link rel="stylesheet" href="controls.css?v=055_diagnostics">
+<link rel="stylesheet" href="controls.css?v=055_filters">
 </head>
 <body>
 <div id="app-boot" role="status" aria-live="polite"><div class="loader"></div><strong>Загружаем GolkaGTB</strong><span>Подготавливаем приложение и аватарки</span><button id="app-boot-skip" hidden>Пропустить загрузку</button></div>
@@ -260,7 +260,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-t
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
 
-<script src="catalog.js?v=055_diagnostics"></script>
+<script src="catalog.js?v=055_filters"></script>
 <script src="controls.js?v=055_1"></script>
 </body>
 </html>
