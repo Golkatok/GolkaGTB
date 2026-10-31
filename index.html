@@ -260,7 +260,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-t
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
 
-<script src="catalog.js?v=055_catalogActions"></script>
+<script src="catalog.js?v=055_speed2"></script>
 <script src="controls.js?v=055_1"></script>
 </body>
 </html>
