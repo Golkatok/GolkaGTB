@@ -14,4 +14,3 @@
 
 .model-subline{display:flex;align-items:center;gap:8px;margin-top:5px;min-width:0}.model-heading .model-subline small{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.model-badges{display:flex;align-items:center;flex-wrap:nowrap;flex-shrink:0;gap:6px;margin:0}
 
-.preference-switch{appearance:none;flex-shrink:0;width:46px;height:28px;margin:0;border:1px solid #666;border-radius:99px;background:#454545;cursor:pointer;position:relative}.preference-switch:before{content:"";position:absolute;width:20px;height:20px;top:3px;left:3px;border-radius:50%;background:#aaa;transition:transform .15s}.preference-switch:checked{background:#eee;border-color:#eee}.preference-switch:checked:before{background:#161616;transform:translateX(18px)}.preference-switch:focus-visible{outline:2px solid var(--cyan,#ddd);outline-offset:3px}

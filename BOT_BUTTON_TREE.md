@@ -666,6 +666,7 @@
 - Правила для участников → `memberrules:{chat_id}`
 - Права команд модерации → `commandrights:{chat_id}`
 - Выключить и убрать все ИИ-функции → `aihide:{chat_id}`
+- Администраторы группы — управляющие бота → `automanagers:{chat_id}`
 - Назад / Главная → `group:{chat_id}`
 - Посмотреть тарифы → `ec:access:{chat_id}`
 - Назад / Главная → `group:{chat_id}`
@@ -774,6 +775,8 @@
 
 Источник: `modbot/service_panel.py:37`
 
+- {'Включено' if enabled else 'Выключено'} → `automanagerstoggle:{chat_id}`
+- Назад / Главная → `tools`
 - {label} → `aihidetoggle:{chat_id}`
 - Назад / Главная → `tools`
 - Чат и модели → `aichat:{chat_id}`
