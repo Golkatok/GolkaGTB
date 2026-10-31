@@ -214,7 +214,7 @@
 
 ### economy_panel.economic_group
 
-Источник: `modbot/economy_panel.py:524`
+Источник: `modbot/economy_panel.py:526`
 
 - {self.e(user, key)} → `ec:{op}:{chat}`
 - Доступ к боту → `ec:access:{chat}`
@@ -228,14 +228,14 @@
 
 ### economy_panel.show_group_features
 
-Источник: `modbot/economy_panel.py:537`
+Источник: `modbot/economy_panel.py:539`
 
 - {self.e(user, label) + ' · ' + self.e(user, 'enabled' if enabled else 'off')} → `ec:featuretoggle:{chat}:{key}`
 - Настроить отдельные команды → `ec:commands:{chat}:0`
 
 ### economy_panel.command_settings
 
-Источник: `modbot/economy_panel.py:547`
+Источник: `modbot/economy_panel.py:549`
 
 - {title + (' · /' + code if '.' not in code else '')} → `ec:cmdtoggle:{chat}:{index}:{page}`
 - {self.e(user, 'visible' if shown else 'hidden')} → `ec:cmdvisible:{chat}:{index}:{page}`
@@ -246,7 +246,7 @@
 
 ### economy_panel.show_goods
 
-Источник: `modbot/economy_panel.py:583`
+Источник: `modbot/economy_panel.py:585`
 
 - {label} → `ec:good:{chat}:{good['id']}`
 - ← → `ec:goods:{chat}:{page - 1}`
@@ -254,7 +254,7 @@
 
 ### economy_panel.show_shop_management
 
-Источник: `modbot/economy_panel.py:607`
+Источник: `modbot/economy_panel.py:609`
 
 - Новый товар / звание → `ec:goodsadd:{chat}`
 - Покупки участников → `ec:orders:{chat}`
@@ -263,7 +263,7 @@
 
 ### economy_panel.show_farms
 
-Источник: `modbot/economy_panel.py:619`
+Источник: `modbot/economy_panel.py:621`
 
 - {self.e(user, 'claim') + f" #{farm['id']}"} → `ec:claim:{target}:{farm['id']}`
 - Продать → `ec:sell:{chat}:{farm['id']}`
@@ -272,32 +272,32 @@
 
 ### economy_panel.show_market
 
-Источник: `modbot/economy_panel.py:646`
+Источник: `modbot/economy_panel.py:648`
 
 - {listing['name'] + ' · ' + display_money(price) + ' ' + ASSETS[listing['asset']]} → `ec:farm:{chat}:{listing['id']}`
 
 ### economy_panel.show_checkout
 
-Источник: `modbot/economy_panel.py:667`
+Источник: `modbot/economy_panel.py:669`
 
 - Оплатить из моего кошелька → `ec:pay:{chat}:{token}:self`
 - Оплатить из казны группы → `ec:pay:{chat}:{token}:group`
 
 ### economy_panel.show_transfer_checkout
 
-Источник: `modbot/economy_panel.py:713`
+Источник: `modbot/economy_panel.py:715`
 
 - Подтвердить перевод → `ec:paytransfer:{chat}:{token}`
 
 ### economy_panel.pay_economic_quote
 
-Источник: `modbot/economy_panel.py:726`
+Источник: `modbot/economy_panel.py:728`
 
 - Улучшения работы и обучения → `ec:dailyupgrades:{chat}`
 
 ### economy_panel.show_progression
 
-Источник: `modbot/economy_panel.py:800`
+Источник: `modbot/economy_panel.py:802`
 
 - Забрать награду · уровень {level} → `ec:rewardclaim:{chat}:{reward['level']}`
 - Улучшения работы и обучения → `ec:dailyupgrades:{chat}`
@@ -305,7 +305,7 @@
 
 ### economy_panel.show_daily_upgrades
 
-Источник: `modbot/economy_panel.py:833`
+Источник: `modbot/economy_panel.py:835`
 
 - {kind}: −1ч · {price} C₲ → `ec:dailyupgrade:{chat}:{kind}`
 - {name} · {price} очков → `ec:studyupgrade:{chat}:{kind}`
@@ -484,7 +484,7 @@
 
 ### navigation.navigation_buttons
 
-Источник: `modbot/navigation.py:164`
+Источник: `modbot/navigation.py:166`
 
 - Назад → `nav:back:{token}:{revision}`
 - Главная → `nav:home:{token}:{revision}`
@@ -665,6 +665,7 @@
 - Назад / Главная → `group:{chat_id}`
 - Правила для участников → `memberrules:{chat_id}`
 - Права команд модерации → `commandrights:{chat_id}`
+- Выключить и убрать все ИИ-функции → `aihide:{chat_id}`
 - Назад / Главная → `group:{chat_id}`
 - Посмотреть тарифы → `ec:access:{chat_id}`
 - Назад / Главная → `group:{chat_id}`
@@ -718,7 +719,7 @@
 
 ### panel.private_input
 
-Источник: `modbot/panel.py:956`
+Источник: `modbot/panel.py:959`
 
 - Применить → `apply:{chat_id}:{nonce}`
 - Назад / Главная → `moderation`
@@ -773,6 +774,8 @@
 
 Источник: `modbot/service_panel.py:37`
 
+- {label} → `aihidetoggle:{chat_id}`
+- Назад / Главная → `tools`
 - Чат и модели → `aichat:{chat_id}`
 - Задачи → `jobs:{chat_id}`
 - AIChating+ → `ec:aisub:{chat_id}:ai_month`
