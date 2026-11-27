@@ -7,12 +7,12 @@
 <meta name="color-scheme" content="dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; media-src 'self' blob:; font-src 'self' data:; connect-src https:; base-uri 'none'; form-action 'none'">
-<meta name="golka-cache-version" content="eabd97e07d307c81">
+<meta name="golka-cache-version" content="e1b11055817ea32d">
 <script>try{var _sp=new URLSearchParams(location.search),_d=_sp.get('design');if(_d==='legacy'){localStorage.setItem('golka.uiDesign','legacy');var _u=new URL('legacy.html',location.href);_u.search=location.search;_u.hash=location.hash;location.replace(_u.href);}else if(_d==='tg'){localStorage.setItem('golka.uiDesign','tg');}else if(localStorage.getItem('golka.uiDesign')==='legacy'){var _u2=new URL('legacy.html',location.href);_u2.search=location.search;_u2.hash=location.hash;location.replace(_u2.href);}if(localStorage.getItem('golka.powerSave')==='1')document.documentElement.classList.add('tg-power-save');}catch(e){}</script>
-<script src="local-cache.js?v=eabd97e07d307c81"></script>
+<script src="local-cache.js?v=e1b11055817ea32d"></script>
 <title>Golka GTB · Мини-приложение</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="tg-theme.css?v=eabd97e07d307c81">
+<link rel="stylesheet" href="tg-theme.css?v=e1b11055817ea32d">
 </head>
 <body>
 <div id="app-boot" role="status" aria-live="polite"><div class="loader"></div><strong>Загружаем GolkaGTB</strong><span>Подготавливаем интерфейс</span><button id="app-boot-skip" hidden>Пропустить загрузку</button></div>
@@ -258,7 +258,7 @@ async function selectCurrency(asset){
 
 function uiSettingsCard(){
   const ps=isPowerSaveOn();
-  return `<div class="tg-section-title">Оформление и интерфейс</div><div class="card tg-group has-badges"><div class="row">${badge('bolt','gold')}<div class="row-body"><strong>Режим энергосбережения</strong><small>Отключает все анимации</small></div><button class="switch" role="switch" aria-label="Режим энергосбережения" aria-checked="${ps}" data-ui-pref="power-save"></button></div><div class="row">${badge('settings','indigo')}<div class="row-body"><strong>Легаси дизайн</strong><small>Классическое оформление мини-приложения</small></div><button class="switch" role="switch" aria-label="Легаси дизайн" aria-checked="false" data-ui-pref="legacy-design"></button></div></div>`;
+  return `<div class="tg-section-title">Оформление и интерфейс</div><div class="card tg-group has-badges"><div class="row">${badge('bolt','orange')}<div class="row-body"><strong>Режим энергосбережения</strong><small>Отключает все анимации</small></div><button class="switch" role="switch" aria-label="Режим энергосбережения" aria-checked="${ps}" data-ui-pref="power-save"></button></div><div class="row">${badge('settings','indigo')}<div class="row-body"><strong>Легаси дизайн</strong><small>Классическое оформление мини-приложения</small></div><button class="switch" role="switch" aria-label="Легаси дизайн" aria-checked="false" data-ui-pref="legacy-design"></button></div></div>`;
 }
 
 function settings(){
@@ -698,7 +698,7 @@ async function init(){
 }
 try{tg?.ready();tg?.expand();tg?.setHeaderColor('#000000');tg?.setBackgroundColor('#000000');tg?.BackButton?.onClick(()=>{if(document.getElementById('tg-lag-prompt')?.open){lagPromptDismissedSession=true;closeLagPrompt();return}if(document.getElementById('dialog').open){dialogBack().catch(error=>toast(error.message));return}if(state.history.length){navDir='back';state.view=state.history.pop();render()}})}catch{}
 </script>
-<script src="flows.js?v=eabd97e07d307c81"></script>
+<script src="flows.js?v=e1b11055817ea32d"></script>
 <script>
 /* Telegram grouped-row styling for Automation (Scripts & Captcha) and demo-mode guard */
 function betaButtons(){
@@ -739,10 +739,10 @@ async function aiTaskChange(payload){state.data=await request('/groups/'+state.g
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-task]');if(!b)return;try{const id=Number(b.dataset.id),j=(state.data.ai.tasks||[]).find(j=>j.id===id);if(b.dataset.aiTask==='new')return aiTaskEditor();if(b.dataset.aiTask==='edit')return aiTaskEditor(id);if(b.dataset.aiTask==='view'){sheet(esc(j.name),`<p class="caption">${esc(modelName(j.ai_source))} · ${esc(j.last_status)}</p><div class="text-content">${esc(j.prompt)}</div>${j.ai_source?`<button class="btn secondary wide" data-ai-task="edit" data-id="${id}">Редактировать</button>`:''}<button class="btn primary wide" data-ai-task="toggle" data-id="${id}">${j.enabled?'Остановить':'Включить'}</button>${j.enabled?`<button class="btn secondary wide" data-ai-task="run" data-id="${id}">Выполнить сейчас</button>`:''}<button class="btn secondary wide" data-ai-task="delete" data-id="${id}">Удалить</button>`);return}if(b.dataset.aiTask==='delete'&&!window.confirm('Удалить задачу?'))return;b.disabled=true;await aiTaskChange({action:b.dataset.aiTask,id});closeDialog();toast('Задача обновлена')}catch(error){toast(error.message)}finally{b.disabled=false}});
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){if(error.code==='plan_required')showModelPlanUpgrade(error.requiredPlan);else document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
-<script src="subscriptions.js?v=eabd97e07d307c81"></script>
-<script src="banners.js?v=eabd97e07d307c81"></script>
-<script src="catalog.js?v=eabd97e07d307c81"></script>
-<script src="controls.js?v=eabd97e07d307c81"></script>
-<script src="tg-overrides.js?v=eabd97e07d307c81"></script>
+<script src="subscriptions.js?v=e1b11055817ea32d"></script>
+<script src="banners.js?v=e1b11055817ea32d"></script>
+<script src="catalog.js?v=e1b11055817ea32d"></script>
+<script src="controls.js?v=e1b11055817ea32d"></script>
+<script src="tg-overrides.js?v=e1b11055817ea32d"></script>
 </body>
 </html>

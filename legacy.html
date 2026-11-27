@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#000000"><meta name="color-scheme" content="dark"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; media-src 'self' blob:; font-src 'self' data:; connect-src https:; base-uri 'none'; form-action 'none'">
-<meta name="golka-cache-version" content="eabd97e07d307c81">
+<meta name="golka-cache-version" content="e1b11055817ea32d">
 <script>try{var _sp=new URLSearchParams(location.search),_d=_sp.get('design');if(_d==='tg'){localStorage.setItem('golka.uiDesign','tg');var _u=new URL('index.html',location.href);_u.search=location.search;_u.hash=location.hash;location.replace(_u.href);}else if(_d==='legacy'){localStorage.setItem('golka.uiDesign','legacy');}if(localStorage.getItem('golka.powerSave')==='1')document.documentElement.classList.add('tg-power-save');}catch(e){}</script>
-<script src="local-cache.js?v=eabd97e07d307c81"></script>
+<script src="local-cache.js?v=e1b11055817ea32d"></script>
 <title>Golka GTB · Мини-приложение</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
@@ -98,10 +98,10 @@ body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(120px 
 
 html.tg-power-save *,html.tg-power-save *:before,html.tg-power-save *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 </style>
-<link rel="stylesheet" href="beta.css?v=eabd97e07d307c81">
-<link rel="stylesheet" href="banners.css?v=eabd97e07d307c81">
-<link rel="stylesheet" href="controls.css?v=eabd97e07d307c81">
-<link rel="stylesheet" href="sheets.css?v=eabd97e07d307c81">
+<link rel="stylesheet" href="beta.css?v=e1b11055817ea32d">
+<link rel="stylesheet" href="banners.css?v=e1b11055817ea32d">
+<link rel="stylesheet" href="controls.css?v=e1b11055817ea32d">
+<link rel="stylesheet" href="sheets.css?v=e1b11055817ea32d">
 </head>
 <body>
 <div id="app-boot" role="status" aria-live="polite"><div class="loader"></div><strong>Загружаем GolkaGTB</strong><span>Подготавливаем приложение и аватарки</span><button id="app-boot-skip" hidden>Пропустить загрузку</button></div>
@@ -264,9 +264,9 @@ function makeDemo(id){const g=state.groups.find(g=>g.id===id)||state.groups[0];r
 async function init(){try{if(state.demo){document.getElementById('demo-banner').hidden=false;state.user={id:1,first_name:'Гость',last_name:'',username:'preview'};state.groups=[{id:'-1001',title:'Солотащера чат',paid:true,tier:'vip',role:'manager',enabled:true},{id:'-1002',title:'GolkaGTB Testing',paid:false,tier:'free',role:'owner',enabled:true}]}else{const me=await request('/me');state.user=me.user;state.groups=me.groups;state.bot=me.bot_username||FALLBACK_BOT}if(!state.groups.length){main.innerHTML=empty('Пока нет доступных групп. Подключите группу в боте или попросите владельца назначить вас управляющим.','users')+btn('Подключить первую группу','connect-bot','manage','wide primary');return}let saved=window.GolkaCache?.prefs.get('selectedGroup');try{saved=saved||localStorage.getItem('golka.selectedGroup')}catch{}await loadGroup(state.groups.some(g=>g.id===saved)?saved:state.groups[0].id)}catch(error){showError(error.message)}}
 try{tg?.ready();tg?.expand();tg?.setHeaderColor('#000000');tg?.setBackgroundColor('#000000');tg?.BackButton?.onClick(()=>{if(document.getElementById('dialog').open){dialogBack().catch(error=>toast(error.message));return}if(state.history.length){state.view=state.history.pop();render()}})}catch{}
 </script>
-<script src="flows.js?v=eabd97e07d307c81"></script>
-<script src="subscriptions.js?v=eabd97e07d307c81"></script>
-<script src="banners.js?v=eabd97e07d307c81"></script>
+<script src="flows.js?v=e1b11055817ea32d"></script>
+<script src="subscriptions.js?v=e1b11055817ea32d"></script>
+<script src="banners.js?v=e1b11055817ea32d"></script>
 
 
 <script>
@@ -278,7 +278,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-t
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){if(error.code==='plan_required')showModelPlanUpgrade(error.requiredPlan);else document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
 
-<script src="catalog.js?v=eabd97e07d307c81"></script>
-<script src="controls.js?v=eabd97e07d307c81"></script>
+<script src="catalog.js?v=e1b11055817ea32d"></script>
+<script src="controls.js?v=e1b11055817ea32d"></script>
 </body>
 </html>
