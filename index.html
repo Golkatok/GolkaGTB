@@ -7,12 +7,12 @@
 <meta name="color-scheme" content="dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; media-src 'self' blob:; font-src 'self' data:; connect-src https:; base-uri 'none'; form-action 'none'">
-<meta name="golka-cache-version" content="e1b11055817ea32d">
-<script>try{var _sp=new URLSearchParams(location.search),_d=_sp.get('design');if(_d==='legacy'){localStorage.setItem('golka.uiDesign','legacy');var _u=new URL('legacy.html',location.href);_u.search=location.search;_u.hash=location.hash;location.replace(_u.href);}else if(_d==='tg'){localStorage.setItem('golka.uiDesign','tg');}else if(localStorage.getItem('golka.uiDesign')==='legacy'){var _u2=new URL('legacy.html',location.href);_u2.search=location.search;_u2.hash=location.hash;location.replace(_u2.href);}if(localStorage.getItem('golka.powerSave')==='1')document.documentElement.classList.add('tg-power-save');}catch(e){}</script>
-<script src="local-cache.js?v=e1b11055817ea32d"></script>
+<meta name="golka-cache-version" content="1c22daba3b8db1f9">
+<script>try{var _sp=new URLSearchParams(location.search),_d=_sp.get('design');var _m=String(location.hash||'').match(/(?:^|[#&])tgWebAppData=([^&]+)/)||String(location.search||'').match(/(?:^\?|&)tgWebAppData=([^&]+)/);if(_m&&_m[1]){try{sessionStorage.setItem('golka.tgInitData',decodeURIComponent(_m[1]))}catch(_){try{sessionStorage.setItem('golka.tgInitData',_m[1])}catch(__){}}}if(_d==='legacy'){localStorage.setItem('golka.uiDesign','legacy');var _u=new URL('legacy.html',location.href);_u.search=location.search;_u.hash=location.hash;location.replace(_u.href);}else if(_d==='tg'){localStorage.setItem('golka.uiDesign','tg');}else if(localStorage.getItem('golka.uiDesign')==='legacy'){var _u2=new URL('legacy.html',location.href);_u2.search=location.search;_u2.hash=location.hash;location.replace(_u2.href);}if(localStorage.getItem('golka.powerSave')==='1')document.documentElement.classList.add('tg-power-save');}catch(e){}</script>
+<script src="local-cache.js?v=1c22daba3b8db1f9"></script>
 <title>Golka GTB · Мини-приложение</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="tg-theme.css?v=e1b11055817ea32d">
+<script src="https://telegram.org/js/telegram-web-app.js" async id="tg-sdk"></script>
+<link rel="stylesheet" href="tg-theme.css?v=1c22daba3b8db1f9">
 </head>
 <body>
 <div id="app-boot" role="status" aria-live="polite"><div class="loader"></div><strong>Загружаем GolkaGTB</strong><span>Подготавливаем интерфейс</span><button id="app-boot-skip" hidden>Пропустить загрузку</button></div>
@@ -83,8 +83,18 @@
 // Публичный адрес API бота. Здесь никогда не должно быть токенов или API-ключей.
 const API_BASE = 'https://golka-gtb-api.j.onjrnm.co.uk';
 const FALLBACK_BOT = 'GolMod_bot';
-const tg=window.Telegram?.WebApp;
-const auth=tg?.initData||'';let cacheAuthReady=false;
+let tg=window.Telegram?.WebApp;
+function _tgParam(raw,key){for(const part of String(raw||'').split('&')){const eq=part.indexOf('=');const k=eq<0?part:part.slice(0,eq);if(k!==key)continue;const v=eq<0?'':part.slice(eq+1);try{return decodeURIComponent(v)}catch{return v}}return ''}
+function extractTelegramInitData(){
+  const sdk=window.Telegram?.WebApp?.initData||'';
+  if(sdk){try{sessionStorage.setItem('golka.tgInitData',sdk)}catch{}return sdk}
+  try{const h=_tgParam((location.hash||'').replace(/^#/,''),'tgWebAppData');if(h){sessionStorage.setItem('golka.tgInitData',h);return h}}catch{}
+  try{const q=_tgParam((location.search||'').replace(/^\?/,''),'tgWebAppData');if(q){sessionStorage.setItem('golka.tgInitData',q);return q}}catch{}
+  try{const p=JSON.parse(sessionStorage.getItem('__telegram__initParams')||'null')?.tgWebAppData||'';if(p){sessionStorage.setItem('golka.tgInitData',p);return p}}catch{}
+  try{const c=sessionStorage.getItem('golka.tgInitData')||'';if(c)return c}catch{}
+  return '';
+}
+let auth=extractTelegramInitData();let cacheAuthReady=false;
 
 const isDemoQuery=new URLSearchParams(location.search).get('demo')==='1';const state={demo:!auth||isDemoQuery,user:null,groups:[],group:null,data:null,view:'home',history:[],bot:FALLBACK_BOT,loading:false,mapURL:null,currency:'coins',walletHistory:{},panel:null};const main=document.getElementById('main');
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -103,7 +113,7 @@ const boltInline=()=>`<svg class="tg-bolt-inline" aria-hidden="true"><use href="
 const badge=(n,c)=>`<span class="tg-badge tg-c-${esc(c)}">${icon(n)}</span>`;
 const leadIcon=(n,blue=false)=>`<span class="tg-lead-icon${blue?' blue':''}">${icon(n)}</span>`;
 const heading=(title,i)=>{
-  const showInlineBack=state.history.length>0&&!tg?.initData;
+  const showInlineBack=state.history.length>0&&!(tg?.initData||auth);
   return `<div class="page-title">${showInlineBack?`<button type="button" class="inline-back-btn" data-action="nav-back" aria-label="Назад">${icon('back')}</button>`:''}<h2>${esc(title)}</h2></div>`;
 };
 const empty=(text,i='chat')=>`<div class="empty">${icon(i)}<div>${esc(text)}</div></div>`;
@@ -151,7 +161,7 @@ function home(){
     ['village','village','teal','Посёлок','Карта, здания и развитие']
   ].filter(f=>(!aiHidden()||!['ai','village'].includes(f[0]))&&(f[0]!=='village'||vip()));
   const autoHtml=manager()?`<div class="tg-section-title">Автоматизация</div><div class="card tg-group has-badges">${typeof betaButtons==='function'?betaButtons():''}</div>`:'';
-  return `<div class="heading overview-heading"><h2>Обзор группы</h2>${status()}</div><div class="card stats-card"><div class="stats-head"><span>Активность за сегодня</span><span>UTC</span></div><div class="stats">${[['chat',s.checked,'Проверено'],['trash',s.removed,'Удалено'],['users',s.members??'—','Участников']].map(([i,n,l])=>`<div class="stat">${icon(i)}<div class="stat-number">${esc(n)}</div><div class="stat-label">${l}</div></div>`).join('')}</div></div>${bannerSlot()}<div class="tg-section-title">Разделы группы</div><div class="card tg-group has-badges">${features.map(([view,icn,col,t,sub])=>`<button class="row" data-view="${view}">${badge(icn,col)}<span class="row-body"><strong>${t}</strong><small>${sub}</small></span>${chev()}</button>`).join('')}</div>${autoHtml}${villagePreview()}<div class="connected-label">${state.demo?'Демонстрационные данные':'Синхронизировано с ботом'} · Golka GTB ${esc(d.version)}${d.development?' · Бета':''}</div>`;
+  return `<div class="heading overview-heading"><h2>Обзор группы</h2>${status()}</div><div class="card stats-card"><div class="stats-head"><span>Активность за сегодня</span><span>UTC</span></div><div class="stats">${[['chat',s.checked,'Проверено'],['trash',s.removed,'Удалено'],['users',s.members??'—','Участников']].map(([i,n,l])=>`<div class="stat">${icon(i)}<div class="stat-number">${esc(n)}</div><div class="stat-label">${l}</div></div>`).join('')}</div></div>${bannerSlot()}<div class="tg-section-title">Разделы группы</div><div class="card tg-group has-badges">${features.map(([view,icn,col,t,sub])=>`<button class="row" data-view="${view}">${badge(icn,col)}<span class="row-body"><strong>${t}</strong><small>${sub}</small></span>${chev()}</button>`).join('')}</div>${autoHtml}${villagePreview()}<div class="connected-label">${state.demo?'Демонстрационные данные':'Синхронизировано с ботом'} · Golka GTB ${esc(d.version)}${d.development?' · Бета':''}${(state.demo&&!isDemoQuery)?`<br><span class="caption">Нет данных Telegram · SDK:${window.Telegram?.WebApp?'да':'нет'} · hash:${(location.hash||'').includes('tgWebAppData')?'да':'нет'}</span>`:''}</div>`;
 }
 
 function toggle(key,features=false){
@@ -696,9 +706,16 @@ async function init(){
     await loadGroup(state.groups.some(g=>g.id===saved)?saved:state.groups[0].id);
   }catch(error){showError(error.message)}
 }
-try{tg?.ready();tg?.expand();tg?.setHeaderColor('#000000');tg?.setBackgroundColor('#000000');tg?.BackButton?.onClick(()=>{if(document.getElementById('tg-lag-prompt')?.open){lagPromptDismissedSession=true;closeLagPrompt();return}if(document.getElementById('dialog').open){dialogBack().catch(error=>toast(error.message));return}if(state.history.length){navDir='back';state.view=state.history.pop();render()}})}catch{}
+let _tgBackBound=false;
+function bindTelegramWebApp(){
+  tg=window.Telegram?.WebApp;
+  try{tg?.ready();tg?.expand();tg?.setHeaderColor('#000000');tg?.setBackgroundColor('#000000');if(tg?.BackButton&&!_tgBackBound){_tgBackBound=true;tg.BackButton.onClick(()=>{if(document.getElementById('tg-lag-prompt')?.open){lagPromptDismissedSession=true;closeLagPrompt();return}if(document.getElementById('dialog').open){dialogBack().catch(error=>toast(error.message));return}if(state.history.length){navDir='back';state.view=state.history.pop();render()}})}}catch{}
+  if(!auth&&!isDemoQuery){const recovered=extractTelegramInitData();if(recovered){auth=recovered;if(state.demo){state.demo=false;state.groups=[];state.group=null;state.data=null;state.walletHistory={};initBeta()}}}
+}
+bindTelegramWebApp();
+document.getElementById('tg-sdk')?.addEventListener('load',bindTelegramWebApp);
 </script>
-<script src="flows.js?v=e1b11055817ea32d"></script>
+<script src="flows.js?v=1c22daba3b8db1f9"></script>
 <script>
 /* Telegram grouped-row styling for Automation (Scripts & Captcha) and demo-mode guard */
 function betaButtons(){
@@ -721,7 +738,7 @@ async function betaScripts(){
 }
 async function initBeta(){
   if(!state.demo){
-    const start=tg?.initDataUnsafe?.start_param||new URLSearchParams(location.search).get('tgWebAppStartParam')||'';
+    const start=tg?.initDataUnsafe?.start_param||_tgParam(auth,'start_param')||new URLSearchParams(location.search).get('tgWebAppStartParam')||'';
     const match=String(start).match(/^cp_([0-9]{1,16})$/);
     if(match){if(!auth){showError('Откройте капчу через Telegram.');return}return openCaptcha('-'+match[1])}
     if(auth){try{const pending=await request('/captcha');if(pending.length)return openCaptcha(pending[0].chat)}catch{}}
@@ -739,10 +756,10 @@ async function aiTaskChange(payload){state.data=await request('/groups/'+state.g
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-task]');if(!b)return;try{const id=Number(b.dataset.id),j=(state.data.ai.tasks||[]).find(j=>j.id===id);if(b.dataset.aiTask==='new')return aiTaskEditor();if(b.dataset.aiTask==='edit')return aiTaskEditor(id);if(b.dataset.aiTask==='view'){sheet(esc(j.name),`<p class="caption">${esc(modelName(j.ai_source))} · ${esc(j.last_status)}</p><div class="text-content">${esc(j.prompt)}</div>${j.ai_source?`<button class="btn secondary wide" data-ai-task="edit" data-id="${id}">Редактировать</button>`:''}<button class="btn primary wide" data-ai-task="toggle" data-id="${id}">${j.enabled?'Остановить':'Включить'}</button>${j.enabled?`<button class="btn secondary wide" data-ai-task="run" data-id="${id}">Выполнить сейчас</button>`:''}<button class="btn secondary wide" data-ai-task="delete" data-id="${id}">Удалить</button>`);return}if(b.dataset.aiTask==='delete'&&!window.confirm('Удалить задачу?'))return;b.disabled=true;await aiTaskChange({action:b.dataset.aiTask,id});closeDialog();toast('Задача обновлена')}catch(error){toast(error.message)}finally{b.disabled=false}});
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){if(error.code==='plan_required')showModelPlanUpgrade(error.requiredPlan);else document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
-<script src="subscriptions.js?v=e1b11055817ea32d"></script>
-<script src="banners.js?v=e1b11055817ea32d"></script>
-<script src="catalog.js?v=e1b11055817ea32d"></script>
-<script src="controls.js?v=e1b11055817ea32d"></script>
-<script src="tg-overrides.js?v=e1b11055817ea32d"></script>
+<script src="subscriptions.js?v=1c22daba3b8db1f9"></script>
+<script src="banners.js?v=1c22daba3b8db1f9"></script>
+<script src="catalog.js?v=1c22daba3b8db1f9"></script>
+<script src="controls.js?v=1c22daba3b8db1f9"></script>
+<script src="tg-overrides.js?v=1c22daba3b8db1f9"></script>
 </body>
 </html>
