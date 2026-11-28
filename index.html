@@ -7,12 +7,12 @@
 <meta name="color-scheme" content="dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; media-src 'self' blob:; font-src 'self' data:; connect-src https:; base-uri 'none'; form-action 'none'">
-<meta name="golka-cache-version" content="1c22daba3b8db1f9">
+<meta name="golka-cache-version" content="400d20294a42b25c">
 <script>try{var _sp=new URLSearchParams(location.search),_d=_sp.get('design');var _m=String(location.hash||'').match(/(?:^|[#&])tgWebAppData=([^&]+)/)||String(location.search||'').match(/(?:^\?|&)tgWebAppData=([^&]+)/);if(_m&&_m[1]){try{sessionStorage.setItem('golka.tgInitData',decodeURIComponent(_m[1]))}catch(_){try{sessionStorage.setItem('golka.tgInitData',_m[1])}catch(__){}}}if(_d==='legacy'){localStorage.setItem('golka.uiDesign','legacy');var _u=new URL('legacy.html',location.href);_u.search=location.search;_u.hash=location.hash;location.replace(_u.href);}else if(_d==='tg'){localStorage.setItem('golka.uiDesign','tg');}else if(localStorage.getItem('golka.uiDesign')==='legacy'){var _u2=new URL('legacy.html',location.href);_u2.search=location.search;_u2.hash=location.hash;location.replace(_u2.href);}if(localStorage.getItem('golka.powerSave')==='1')document.documentElement.classList.add('tg-power-save');}catch(e){}</script>
-<script src="local-cache.js?v=1c22daba3b8db1f9"></script>
+<script src="local-cache.js?v=400d20294a42b25c"></script>
 <title>Golka GTB · Мини-приложение</title>
 <script src="https://telegram.org/js/telegram-web-app.js" async id="tg-sdk"></script>
-<link rel="stylesheet" href="tg-theme.css?v=1c22daba3b8db1f9">
+<link rel="stylesheet" href="tg-theme.css?v=400d20294a42b25c">
 </head>
 <body>
 <div id="app-boot" role="status" aria-live="polite"><div class="loader"></div><strong>Загружаем GolkaGTB</strong><span>Подготавливаем интерфейс</span><button id="app-boot-skip" hidden>Пропустить загрузку</button></div>
@@ -133,7 +133,16 @@ window.visualViewport?.addEventListener('resize',syncSheetViewport);window.visua
 function haptic(){try{tg?.HapticFeedback?.impactOccurred('light')}catch{}}
 async function request(path,options={}){
  if(!API_BASE||API_BASE==='__API_BASE__')throw new Error('Сервер ещё не подключён. Обратитесь к владельцу бота.');
- const response=await fetch(API_BASE.replace(/\/$/,'')+'/miniapp/v1'+path,{...options,headers:{'Authorization':'tma '+auth,...(options.body?{'Content-Type':'application/json'}:{}),...options.headers},signal:AbortSignal.timeout(18000),credentials:'omit',cache:'no-store'});
+ const {timeoutMs=18000,...fetchOpts}=options;
+ const endpoint=String(path||'').split('?')[0].replace(/\/-[0-9]+/,'/…')||'/';
+ let response;
+ try{
+  response=await fetch(API_BASE.replace(/\/$/,'')+'/miniapp/v1'+path,{...fetchOpts,headers:{'Authorization':'tma '+auth,...(fetchOpts.body?{'Content-Type':'application/json'}:{}),...fetchOpts.headers},signal:AbortSignal.timeout(timeoutMs),credentials:'omit',cache:'no-store'});
+ }catch(err){
+  if(err?.name==='TimeoutError'||/timed out/i.test(err?.message||'')){const e=new Error(`Сервер не ответил вовремя (${endpoint}). Если в вашем регионе ограничивают доступ к зарубежным серверам — включите VPN и попробуйте снова.`);e.code='timeout';throw e}
+  if(err?.name==='TypeError'&&/failed to fetch|load failed|networkerror/i.test(err?.message||'')){const e=new Error(`Нет связи с сервером (${endpoint}). Проверьте интернет или включите VPN и попробуйте снова.`);e.code='network';throw e}
+  throw err;
+ }
  if(!response.ok){let data;try{data=await response.json()}catch{}const error=new Error(data?.retry_after?'Следующая попытка через '+duration(data.retry_after):data?.error||'Сервер недоступен. Попробуйте позже.');error.status=response.status;error.code=data?.code;error.requiredPlan=data?.required_plan;throw error}
  const data=await response.json();if(!cacheAuthReady&&auth){try{const user=JSON.parse(new URLSearchParams(auth).get('user')||'null');if(user?.id){await window.GolkaCache?.authorize(user.id,API_BASE);cacheAuthReady=true}}catch{}}return data;
 }
@@ -715,7 +724,7 @@ function bindTelegramWebApp(){
 bindTelegramWebApp();
 document.getElementById('tg-sdk')?.addEventListener('load',bindTelegramWebApp);
 </script>
-<script src="flows.js?v=1c22daba3b8db1f9"></script>
+<script src="flows.js?v=400d20294a42b25c"></script>
 <script>
 /* Telegram grouped-row styling for Automation (Scripts & Captcha) and demo-mode guard */
 function betaButtons(){
@@ -741,7 +750,7 @@ async function initBeta(){
     const start=tg?.initDataUnsafe?.start_param||_tgParam(auth,'start_param')||new URLSearchParams(location.search).get('tgWebAppStartParam')||'';
     const match=String(start).match(/^cp_([0-9]{1,16})$/);
     if(match){if(!auth){showError('Откройте капчу через Telegram.');return}return openCaptcha('-'+match[1])}
-    if(auth){try{const pending=await request('/captcha');if(pending.length)return openCaptcha(pending[0].chat)}catch{}}
+    if(auth){try{const pending=await request('/captcha',{timeoutMs:4500});if(pending.length)return openCaptcha(pending[0].chat)}catch{}}
   }
   return init();
 }
@@ -756,10 +765,10 @@ async function aiTaskChange(payload){state.data=await request('/groups/'+state.g
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-ai-task]');if(!b)return;try{const id=Number(b.dataset.id),j=(state.data.ai.tasks||[]).find(j=>j.id===id);if(b.dataset.aiTask==='new')return aiTaskEditor();if(b.dataset.aiTask==='edit')return aiTaskEditor(id);if(b.dataset.aiTask==='view'){sheet(esc(j.name),`<p class="caption">${esc(modelName(j.ai_source))} · ${esc(j.last_status)}</p><div class="text-content">${esc(j.prompt)}</div>${j.ai_source?`<button class="btn secondary wide" data-ai-task="edit" data-id="${id}">Редактировать</button>`:''}<button class="btn primary wide" data-ai-task="toggle" data-id="${id}">${j.enabled?'Остановить':'Включить'}</button>${j.enabled?`<button class="btn secondary wide" data-ai-task="run" data-id="${id}">Выполнить сейчас</button>`:''}<button class="btn secondary wide" data-ai-task="delete" data-id="${id}">Удалить</button>`);return}if(b.dataset.aiTask==='delete'&&!window.confirm('Удалить задачу?'))return;b.disabled=true;await aiTaskChange({action:b.dataset.aiTask,id});closeDialog();toast('Задача обновлена')}catch(error){toast(error.message)}finally{b.disabled=false}});
 document.addEventListener('submit',async e=>{if(e.target.id!=='ai-task-editor')return;e.preventDefault();const f=e.target,b=f.querySelector('[type=submit]');b.disabled=true;try{if(String(state.group)!==f.dataset.group)throw Error('Группа изменилась.');const d=new FormData(f);await aiTaskChange({action:'save',...(f.dataset.id?{id:Number(f.dataset.id)}:{}),name:d.get('name'),source:d.get('source'),interval:Number(d.get('interval'))*60,prompt:d.get('prompt'),search_query:d.get('search_query')});closeDialog();toast('Задача сохранена на паузе')}catch(error){if(error.code==='plan_required')showModelPlanUpgrade(error.requiredPlan);else document.getElementById('ai-task-error').textContent=error.message}finally{b.disabled=false}});
 </script>
-<script src="subscriptions.js?v=1c22daba3b8db1f9"></script>
-<script src="banners.js?v=1c22daba3b8db1f9"></script>
-<script src="catalog.js?v=1c22daba3b8db1f9"></script>
-<script src="controls.js?v=1c22daba3b8db1f9"></script>
-<script src="tg-overrides.js?v=1c22daba3b8db1f9"></script>
+<script src="subscriptions.js?v=400d20294a42b25c"></script>
+<script src="banners.js?v=400d20294a42b25c"></script>
+<script src="catalog.js?v=400d20294a42b25c"></script>
+<script src="controls.js?v=400d20294a42b25c"></script>
+<script src="tg-overrides.js?v=400d20294a42b25c"></script>
 </body>
 </html>
